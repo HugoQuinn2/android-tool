@@ -1,0 +1,40 @@
+#pnl_files{
+     -fx-background-color: transparent;
+}
+#pnl_files .label{
+     -fx-text-fill: #FFFFFF;
+}
+
+#file_menu_options{
+    -fx-spacing: 10px;
+    -fx-alignment: center_right;
+}
+#file_menu_options .button {
+    -fx-background-color: #A6D785;
+    -fx-pref-width: 80px;
+}
+#file_menu_options #btn_savedata{
+    -fx-background-color: #9DBDD7;
+}
+#file_menu_options #btn_delete_file{
+    -fx-background-color: #D77C73;
+}
+
+.tree-table-view .column-header {
+    -fx-alignment: CENTER;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+
+.tree-table-view{
+    -fx-border-width: 1px;
+    -fx-border-color: #222222;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+}

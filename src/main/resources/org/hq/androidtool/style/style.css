@@ -1,0 +1,45 @@
+/*
+ligth theme
+background: #F9F9F9
+style-menu: #B1DD82
+style-menu-item: #85A462
+style-sub-menu-time: B9E58A
+text-fill: #2E2E2E
+*/
+
+.root{
+ -fx-background-color: #F9F9F9;
+ -fx-text-fill: #2E2E2E;
+}
+#powered_by{
+    -fx-text-fill: #2E2E2E;
+}
+.label{
+    -fx-text-fill: #2E2E2E;
+}
+/****** Estylo y efecto de botones ******/
+
+.button:hover {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #444444; /* Cambia el color al pasar el mouse */
+}
+/**************************************/
+
+#menu_bar{
+ -fx-background-color: #222222;
+}
+
+.btn_menubar {
+    -fx-background-color: #333333; /* Color de fondo del botón */
+    -fx-text-fill: #FFFFFF;        /* Color del texto */
+    -fx-border-radius: 0;          /* Radio del borde (0 para esquinas cuadradas) */
+}
+
+.pane_menu_bar:hover{
+    -fx-border-width: 0px;
+    -fx-border-color: #333333;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+    -fx-background-color: #333333;
+    -fx-background-radius: 10px
+}

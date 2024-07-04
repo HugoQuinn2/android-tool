@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="500.0" minWidth="-Infinity" prefHeight="1500.0" prefWidth="250.0" styleClass="menu_bar" stylesheets="@../../style/style_menu_bar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.gui.menu_bar_controller">
+   <children>
+      <Pane maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="81.0" fitWidth="77.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/Interface-icons/mobile_icon_128.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="app_settings" layoutX="201.0" layoutY="121.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0" styleClass="menu_bar_button">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="icon_menu_bar">
+                     <image>
+                        <Image url="@../icon/Interface-icons/setting_icon_32.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="app_info" layoutX="169.0" layoutY="122.0" mnemonicParsing="false" onAction="#onInfo_device" prefHeight="20.0" prefWidth="25.0" styleClass="menu_bar_button">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="icon_menu_bar">
+                     <image>
+                        <Image url="@../icon/Interface-icons/info_circle_icon_32.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Label fx:id="device_state" alignment="CENTER" layoutX="-1.0" layoutY="81.0" prefHeight="20.0" prefWidth="92.0" text="Sin dispositivo" />
+            <Button fx:id="app_reload_state" layoutX="201.0" layoutY="1.0" mnemonicParsing="false" onAction="#onApp_reload_state" prefHeight="27.0" prefWidth="30.0" styleClass="menu_bar_button">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="icon_menu_bar">
+                     <image>
+                        <Image url="@../icon/Interface-icons/rotate_left_icon_32.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></Pane>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1500.0" prefWidth="230.0" styleClass="menu_bar_opc">
+         <children>
+            <HBox fx:id="mb_files" alignment="CENTER_LEFT" onMouseClicked="#onFile_menu_bar" prefHeight="34.0" prefWidth="298.0" styleClass="menu_opc">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="icon_menu_bar">
+                     <image>
+                        <Image url="@../icon/Interface-icons/folder_icon_32.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Archivos" />
+               </children>
+            </HBox>
+            <HBox fx:id="mb_apps" alignment="CENTER_LEFT" layoutX="10.0" layoutY="21.0" prefHeight="34.0" prefWidth="298.0" styleClass="menu_opc">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="icon_menu_bar">
+                     <image>
+                        <Image url="@../icon/Interface-icons/element_icon_32.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Aplicaciones" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="78.0" prefHeight="34.0" prefWidth="298.0" styleClass="menu_opc">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="icon_menu_bar">
+                     <image>
+                        <Image url="@../icon/Interface-icons/call_icon_32.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Contactos" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox prefHeight="61.0" prefWidth="278.0">
+         <children>
+            <Label styleClass="powered_by" text="Powered by: @hugoquinn" />
+            <Region prefHeight="17.0" prefWidth="4.0" HBox.hgrow="ALWAYS" />
+            <Label fx:id="lbl_app_version" styleClass="powered_by" text="vx.x" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

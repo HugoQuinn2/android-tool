@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" styleClass="popup" stylesheets="@../../style/style_popu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.gui.popup_info">
+   <children>
+      <Label alignment="CENTER" prefHeight="17.0" prefWidth="287.0" text="Informacion de dispositivo">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="12.0" prefWidth="300.0">
+         <children>
+            <Label text="Android:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextFlow />
+            <TextField fx:id="lblAndroidVersion" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="serial" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="45.0" prefHeight="12.0" prefWidth="300.0">
+         <children>
+            <Label text="Fabricante:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextFlow />
+            <TextField fx:id="lblManufacturer" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="serial" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="6.0" prefWidth="300.0">
+         <children>
+            <Label text="Modelo:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="lblModel" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="serial" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="300.0">
+         <children>
+            <Label text="Numero de serie:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="lblSerialNumber" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="serial" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="47.0" prefHeight="0.0" prefWidth="300.0">
+         <children>
+            <Label text="MAC:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="lblMAC" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="serial" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="84.0" prefHeight="0.0" prefWidth="300.0">
+         <children>
+            <Label text="IP:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="lblIP" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="serial" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="45.0" prefHeight="12.0" prefWidth="300.0">
+         <children>
+            <Label text="Sim:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextFlow />
+            <TextField fx:id="lblContract" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="serial" />
+         </children>
+      </HBox>
+      <Label alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="17.0" prefWidth="287.0" text="Almacenamiento">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="177.0" prefHeight="12.0" prefWidth="300.0">
+         <children>
+            <Label fx:id="lblPerStorage" text="50% en uso">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="20.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <TextFlow />
+            <TextField fx:id="lblStorage" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="122.0" styleClass="lbl_popup" text="50 GB / 100 GB" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="177.0" prefHeight="20.0" prefWidth="280.0">
+         <children>
+            <ProgressBar fx:id="progres_storeage" prefHeight="51.0" prefWidth="280.0" progress="0.0" />
+            <TextFlow />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
