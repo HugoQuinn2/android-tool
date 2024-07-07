@@ -10,22 +10,22 @@ text-fill: #2E2E2E
 .menu_bar{
     -fx-background-color: #9EC475;
     -fx-padding: 10px;
-    -fx-max-width: 250px;
+    -fx-max-width: 200px;
 }
 
 .menu_bar .label{
     -fx-text-fill: #2E2E2E;
-    -fx-font-size: 16px;
+    -fx-font-size: 14px;
 }
 
 .menu_bar .powered_by{
-    -fx-text-fill: #2E2E2E;
-    -fx-font-size: 12px;
+    -fx-text-fill: #505050;
+    -fx-font-size: 10px;
 }
 
 .icon_menu_bar{
-    -fx-fit-width: 16px;
-    -fx-fit-height: 16px;
+    -fx-fit-width: 20px;
+    -fx-fit-height: 20px;
 }
 
 .menu_bar_button{

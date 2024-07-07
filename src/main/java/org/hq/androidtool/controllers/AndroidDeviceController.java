@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class AndroidDeviceController {
-    private final adbController adbController;
+    private final controller adbController;
     private AndroidDeviceModel androidDeviceModel;
     private final int intervalThread = 1; //Segundos
 
     public AndroidDeviceController(){
-        this.adbController = new adbController();
+        this.adbController = new controller();
         androidDeviceModel = fetchData();
     }
     public AndroidDeviceModel fetchData(){

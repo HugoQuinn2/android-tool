@@ -58,7 +58,7 @@ public class menu_bar_controller {
     public void onApp_reload_state(ActionEvent event) {
         androidDeviceController.fetchData();
         String deviceModel = androidDeviceController.getModelDevice();
-        String stateDevice = androidDeviceController.getAdbController().getAdbModel().getStateDevice();
+        String stateDevice = androidDeviceController.getAdbController().getModel().getStateDevice();
 
         if (stateDevice == "device"){
             device_state.setText(deviceModel);

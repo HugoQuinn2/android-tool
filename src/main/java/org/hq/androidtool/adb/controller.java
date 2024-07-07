@@ -16,16 +16,16 @@ import java.util.regex.Pattern;
 
 @Data
 @AllArgsConstructor
-public class adbController {
-    private final org.hq.androidtool.adb.adbModel adbModel;
+public class controller {
+    private final model model;
     private Process process;
 
-    public adbController(){
-        adbModel = new adbModel(getClass().getResource("/org/hq/androidtool/adbAndroid/adb.exe").getPath());
+    public controller(){
+        model = new model(getClass().getResource("/org/hq/androidtool/adbAndroid/adb.exe").getPath());
     }
 
     /***** Control and connection device functions *****/
-    private boolean executeCommand(ProcessBuilder processBuilder){
+    private void executeCommand(ProcessBuilder processBuilder){
         try {
             //Iniciar el proceso enviado
             //processBuilder.redirectErrorStream(true);
@@ -42,44 +42,42 @@ public class adbController {
                 message.add(line);
             }
             process.waitFor();
-            adbModel.setMessage(message.toString());
-            return true;
+            model.setMessage(message.toString());
         } catch (IOException | InterruptedException e) {
             System.err.println(e.getMessage());
-            return false;
         }
     } // Execute and recompile message command
     public void device(){
         if(getRoot()){
-            adbModel.setToolLevel("root");
+            model.setToolLevel("root");
         } else {
-            adbModel.setToolLevel("user");
+            model.setToolLevel("user");
         }
 
-        executeCommand(adbModel.getDevice());
-        adbModel.setStateDevice("no device");
+        executeCommand(model.getDevice());
+        model.setStateDevice("no device");
 
-        String message = adbModel.getMessage().toLowerCase().split(",")[1];
+        String message = model.getMessage().toLowerCase().split(",")[1];
 
         if ( message.contains("unauthorized") ){
-            adbModel.setStateDevice("unauthorized");
+            model.setStateDevice("unauthorized");
 
         } else if ( message.contains("device") ){
-            adbModel.setStateDevice("device");
+            model.setStateDevice("device");
 
         } else if (message.contains("offline")){
-            adbModel.setStateDevice("offline");
+            model.setStateDevice("offline");
         }
     } // Execute adb like root and state connection
 
     /******* Information device functions ********/
     public boolean getRoot(){
-        executeCommand(adbModel.getRoot());
+        executeCommand(model.getRoot());
 
-        for (String word : adbModel.getMessage().split("\\s+")){
-            if (adbModel.getMessage().contains("cannot run as root")
-                    || adbModel.getMessage().contains("unable to connect for root")
-                    || adbModel.getMessage() == "[]" ) {
+        for (String word : model.getMessage().split("\\s+")){
+            if (model.getMessage().contains("cannot run as root")
+                    || model.getMessage().contains("unable to connect for root")
+                    || model.getMessage().equals("[]")) {
                 return false;
             }
         }
@@ -87,67 +85,67 @@ public class adbController {
     }
     public String getDeviceName(){
         String deviceName = null;
-        String pat = "(?<=List of devices attached,\\s)(\\w+)(?=\\s+" + adbModel.getStateDevice() + ")";
+        String pat = "(?<=List of devices attached,\\s)(\\w+)(?=\\s+" + model.getStateDevice() + ")";
 
         Pattern pattern = Pattern.compile(pat);
-        Matcher matcher = pattern.matcher(adbModel.getMessage());
+        Matcher matcher = pattern.matcher(model.getMessage());
 
         return deviceName = matcher.find() ? matcher.group() : null;
     } // Extract device name from command device
     public boolean getStateDevice(){
-        return Objects.equals(adbModel.getStateDevice(), "device");
+        return Objects.equals(model.getStateDevice(), "device");
     } // Define if the device is useful
     public String getDeviceModel(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
-        executeCommand(adbModel.getDeviceModel());
+        executeCommand(model.getDeviceModel());
 
-        return adbModel.getMessage().replaceAll("[\\[\\]]", "");
+        return model.getMessage().replaceAll("[\\[\\]]", "");
     } // Execute command model and extract model
     public String getSerialNumber(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
-        executeCommand(adbModel.getSerialNumber());
-        return adbModel.getMessage().replaceAll("[\\[\\]]", "");
+        executeCommand(model.getSerialNumber());
+        return model.getMessage().replaceAll("[\\[\\]]", "");
     } // Execute command serial number and extract sn
     public String getMacDevice(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
         String macDevice = null;
-        executeCommand(adbModel.getWlan());
+        executeCommand(model.getWlan());
 
         String pat = "link/ether ([0-9a-fA-F:]{17})";
 
         Pattern pattern = Pattern.compile(pat);
-        Matcher matcher = pattern.matcher(adbModel.getMessage());
+        Matcher matcher = pattern.matcher(model.getMessage());
 
         return macDevice = matcher.find() ? matcher.group().replace("link/ether ", "") : null;
     } // Execute command mac and extract mac device
     public String getIpDevice(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
         String ipDevice = null;
-        executeCommand(adbModel.getWlan());
+        executeCommand(model.getWlan());
 
         String pat = "inet ([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})";
 
         Pattern pattern = Pattern.compile(pat);
-        Matcher matcher = pattern.matcher(adbModel.getMessage());
+        Matcher matcher = pattern.matcher(model.getMessage());
 
         return ipDevice = matcher.find() ? matcher.group().replace("inet ", "") : null;
     } // Execute command ip and extract ip device
     public List<String> getApplicationsDevice(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
 
         List<String> listPackages = new ArrayList<>();
-        executeCommand(adbModel.getPackages());
-        String message = adbModel.getMessage().substring(1, adbModel.getMessage().length() - 1);
+        executeCommand(model.getPackages());
+        String message = model.getMessage().substring(1, model.getMessage().length() - 1);
         String[] packages = message.split(",");
 
         for (String pack : packages){
@@ -161,15 +159,15 @@ public class adbController {
         return listPackages;
     } // Execute command applications device and filter native applications
     public List<FileInfoModel> getFileInfoDevice(String path){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
 
         List<FileInfoModel> fileInfoModelList = new ArrayList<>(List.of());
         List<String> fileInfo;
 
-        executeCommand(adbModel.getFileInfo(path));
-        fileInfo = List.of(adbModel.getMessage()
+        executeCommand(model.getFileInfo(path));
+        fileInfo = List.of(model.getMessage()
                 .replaceAll("[\\[\\]]", "")
                 .replaceAll("\\s+", " ").trim()
                 .split(","));
@@ -185,7 +183,7 @@ public class adbController {
                         .size(fileData.get(4))
                         .date(fileData.get(5) + " " + fileData.get(6))
                         .filePath(path + "/" + fileData.get(7))
-                        .isEnabled(Objects.equals(adbModel.getToolLevel(), fileData.get(2)))
+                        .isEnabled(Objects.equals(model.getToolLevel(), fileData.get(2)))
                         .build();
 
                 fileInfoModelList.add(fileInfoModel);
@@ -193,42 +191,42 @@ public class adbController {
         }
 
         return fileInfoModelList;
-    }
+    } // Execute command files and filter for files and carpets
     public String getAndroidVersion(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
-        executeCommand(adbModel.getAndroidVersion());
+        executeCommand(model.getAndroidVersion());
 
-        return adbModel.getMessage().replaceAll("[\\[\\]]", "");
+        return model.getMessage().replaceAll("[\\[\\]]", "");
     }
     public String getSimContract(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
-        executeCommand(adbModel.getSimContract());
+        executeCommand(model.getSimContract());
 
-        return adbModel.getMessage().replaceAll("[\\[\\]]", "");
+        return model.getMessage().replaceAll("[\\[\\]]", "");
     }
     public String getManufacturer(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
-        executeCommand(adbModel.getManufacturer());
+        executeCommand(model.getManufacturer());
 
-        return adbModel.getMessage().replaceAll("[\\[\\]]", "");
+        return model.getMessage().replaceAll("[\\[\\]]", "");
     }
     public String getStorage(){
-        if (!Objects.equals(adbModel.getStateDevice(), "device")){
+        if (!Objects.equals(model.getStateDevice(), "device")){
             return null;
         }
-        executeCommand(adbModel.getStorage());
+        executeCommand(model.getStorage());
 
         int blocks = 0;
         int used = 0;
         boolean flat = false;
 
-        List<String> storageList = List.of(adbModel.getMessage()
+        List<String> storageList = List.of(model.getMessage()
                 .replaceAll("[\\[\\]]", "")
                 .replaceAll("\\s+", " ").trim()
                 .split(","));

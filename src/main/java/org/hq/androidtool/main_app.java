@@ -17,8 +17,8 @@ public class main_app extends Application {
         primaryStage.getIcons().add(new Image( app_icon_path ));
         primaryStage.setScene(scene);
         primaryStage.setTitle("Android Tool");
-        primaryStage.setMinWidth(1300);
-        primaryStage.setMinHeight(780);
+        primaryStage.setMinWidth(750);
+        primaryStage.setMinHeight(550);
         primaryStage.show();
     }
 

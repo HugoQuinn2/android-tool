@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class adbModel {
+public class model {
     private String adbPath;
     private String message;
     private String stateDevice;
@@ -29,8 +29,9 @@ public class adbModel {
     private ProcessBuilder simContract;
     private ProcessBuilder manufacturer;
     private ProcessBuilder storage;
+    private ProcessBuilder contactPhone;
 
-    public adbModel(String adbPath){
+    public model(String adbPath){
         this.adbPath = adbPath;
         this.root = new ProcessBuilder(adbPath, "root");
         this.deviceModel = new ProcessBuilder(adbPath, "shell", "getprop", "ro.product.model");
@@ -46,6 +47,7 @@ public class adbModel {
         this.simContract = new ProcessBuilder(adbPath, "shell", "getprop", "gsm.sim.operator.alpha");
         this.manufacturer = new ProcessBuilder(adbPath, "shell", "getprop", "ro.product.manufacturer");
         this.storage = new ProcessBuilder(adbPath, "shell", "df");
+        this.contactPhone = new ProcessBuilder(adbPath, "shell", "content", "query", "--uri", "content://contacts/phones/", "--projection display_name:number");
     }
 
     public void setDeleteApplication(String packageApplication) {
