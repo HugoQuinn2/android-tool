@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.BorderPane?>
-
-
-<BorderPane fx:id="bp_main" prefHeight="550.0" prefWidth="750.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.gui.gui_main_controller" />

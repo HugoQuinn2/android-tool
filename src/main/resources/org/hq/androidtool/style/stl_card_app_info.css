@@ -1,0 +1,21 @@
+.card_app_info{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0, 5);
+    -fx-background-color: #FEFFFE;
+}
+
+.btn_card{
+    -fx-border-color: transparent;
+    -fx-border-style: solid;
+    -fx-background-color: transparent;
+}
+
+.btn_card:hover{
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.btn_icon_card{
+    -fx-icon-size: 20px;
+    -fx-icon-color: #404040;
+}

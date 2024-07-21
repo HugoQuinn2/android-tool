@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxWidth="167.0" minHeight="168.0" minWidth="150.0" prefHeight="168.0" prefWidth="167.0" stylesheets="@../../style/stl_card_app_info.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.gui.application_info_card_controller">
+   <children>
+      <ImageView fitHeight="90.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/Interface-icons/no_icon_app.png" />
+         </image>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </ImageView>
+      <Label fx:id="lblAppName" prefHeight="20.0" prefWidth="160.0" text="app-name">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAppPack" prefHeight="13.0" prefWidth="153.0" text="app-package">
+         <font>
+            <Font size="9.0" />
+         </font></Label>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <styleClass>
+      <String fx:value="card_app_info" />
+      <String fx:value="card" />
+   </styleClass>
+</VBox>

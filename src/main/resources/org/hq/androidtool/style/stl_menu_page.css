@@ -1,0 +1,23 @@
+.root {
+    -fx-background-color: #242B25;
+    -fx-min-width: 920px;
+    -fx-min-height: 750px;
+}
+
+.pnl_info {
+    -fx-border-radius: 20px;
+    -fx-background-color: #708271;
+    -fx-background-radius: 20px
+}
+
+.pnl_info Hbox{
+    -fx-background-color: transparent;
+}
+
+.lbl_info{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 18px;
+    -fx-padding: 0;
+    -fx-fill-color: #FFFFFF;
+}

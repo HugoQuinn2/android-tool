@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="690.0" prefWidth="1060.0" styleClass="root_apps_manager" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppsPageController">
+   <children>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" styleClass="pnl_separator_vertical_left" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="100.0" spacing="10.0" styleClass="pnl_separator_horizontal_bottom">
+               <children>
+                  <TextField prefHeight="25.0" prefWidth="405.0" />
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" text="Borrar">
+                     <graphic>
+                        <FontIcon />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="button-red" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Instalar">
+                     <graphic>
+                        <FontIcon />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="button-blue" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Descargar">
+                     <graphic>
+                        <FontIcon />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="button-blue" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </HBox>
+            <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="apps_container" VBox.vgrow="ALWAYS">
+               <content>
+                  <FlowPane fx:id="pnlApplicationManager" hgap="20.0" minWidth="-Infinity" styleClass="apps_container" vgap="20.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="116.0" prefHeight="200.0" prefWidth="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" styleClass="icon-transparent">
+               <graphic>
+                  <FontIcon iconLiteral="bi-speedometer2" styleClass="button" />
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../style/stl_apps_manager.css" />
+      <URL value="@../../style/GreenDarkTheme.css" />
+   </stylesheets>
+</AnchorPane>

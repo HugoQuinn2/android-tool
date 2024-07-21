@@ -8,24 +8,70 @@ text-fill: #2E2E2E
 */
 
 .menu_bar{
-    -fx-background-color: #9EC475;
+    -fx-background-color: #414D42;
     -fx-padding: 10px;
-    -fx-max-width: 200px;
+    -fx-max-width: 180px;
 }
 
 .menu_bar .label{
-    -fx-text-fill: #2E2E2E;
-    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+
+.combo-box{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0px;
+    -fx-margin: 0px;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-view{
+    -fx-background-color: #313932;
+    -fx-border-color: transparent;
+    -fx-padding: 0px;
+    -fx-margin: 0px;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0px;
+    -fx-margin: 0px;
+    -fx-text-fill: white;
 }
 
 .menu_bar .powered_by{
-    -fx-text-fill: #505050;
+    -fx-text-fill: white;
     -fx-font-size: 10px;
 }
 
+.icon_menu_config{
+    -fx-icon-size: 20px;
+    -fx-icon-color: white;
+}
+
+.devices_manager{
+    -fx-background-color: #313932;
+    -fx-background-radius: 100px;
+    -fx-padding: 5px;
+    -fx-margin: 5px;
+}
+
 .icon_menu_bar{
-    -fx-fit-width: 20px;
-    -fx-fit-height: 20px;
+    -fx-icon-size: 25px;
+    -fx-icon-color: white;
+}
+
+.menu_bar .device_name_lbl {
+    -fx-font-size: 12px;
+}
+
+.icon_menu_bar:disabled	{
+    -fx-icon-color: gray;
 }
 
 .menu_bar_button{
@@ -43,25 +89,25 @@ text-fill: #2E2E2E
 }
 
 .menu_bar_opc{
-    -fx-spacing: 5px;
-    -fx-padding: 10px 0px 10px 0px;
     -fx-border-width: 1px 0px 1px 0px;
     -fx-border-style: solid;
-    -fx-border-color: #85A462;
+    -fx-border-color: #586759;
+    -fx-padding: 5px 0px;
+    -fx-spacing: 5px;
 }
 
 
 .menu_list_container:hover, .menu_opc:hover{
     -fx-border-width: 0px;
     -fx-border-style: solid;
-    -fx-border-radius: 10px;
-    -fx-background-color: #85A462;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 100px;
+    -fx-background-color: #313932;
+    -fx-background-radius: 100px;
     -fx-cursor: hand;
 }
 
 .menu_opc, .menu_list_title, .menu_list_item{
-    -fx-padding: 10px;
+    -fx-padding: 5px 10px;
     -fx-spacing: 10px;
     -fx-alignment: center-left;
 }

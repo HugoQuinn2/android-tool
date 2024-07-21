@@ -8,8 +8,8 @@ text-fill: #2E2E2E
 */
 
 .root{
- -fx-background-color: #F9F9F9;
- -fx-text-fill: #2E2E2E;
+ -fx-background-color: #242B25;
+ -fx-text-fill: white;
 }
 #powered_by{
     -fx-text-fill: #2E2E2E;
@@ -26,7 +26,7 @@ text-fill: #2E2E2E
 /**************************************/
 
 #menu_bar{
- -fx-background-color: #222222;
+    -fx-background-color: #222222;
 }
 
 .btn_menubar {
