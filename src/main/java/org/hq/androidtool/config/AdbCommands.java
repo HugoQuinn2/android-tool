@@ -18,7 +18,11 @@ public enum AdbCommands{
     ADB_PACKAGES        ("-s %s shell pm list packages"),
     ADB_PACKAGES_INFO   ("-s %s shell dumpsys package %s"),
     ADB_PS              ("-s %s shell ps"),
-    ADB_TOP             ("-s %s shell top -n 1");
+    ADB_TOP             ("-s %s shell top -n 1"),
+    ABD_UNINSTALL       ("-s %s uninstall %s"),
+    ADB_INSTALL         ("-s %s install %s"),
+    ADB_PACK_PATH       ("-s %s shell pm path %s"),
+    ADB_PULL            ("-s %s pull %s %s");
 
     private final String command;
 

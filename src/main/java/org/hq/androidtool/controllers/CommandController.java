@@ -1,16 +1,15 @@
 package org.hq.androidtool.controllers;
 
+import javafx.scene.layout.Pane;
 import org.hq.androidtool.config.AdbCommands;
-import org.hq.androidtool.config.DevicesState;
 import org.hq.androidtool.models.Device;
 import org.hq.androidtool.services.AdbService;
 import org.hq.androidtool.utils.AdbCommandBuilder;
 import org.hq.androidtool.utils.AdbParsers;
 
+import javax.swing.plaf.PanelUI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class CommandController {
     private final AdbCommandBuilder adbCommandBuilder;
@@ -123,6 +122,29 @@ public class CommandController {
 
     public String getPackageInfo(Device device, String pack) {
         List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_PACKAGES_INFO.getCommand(device.getDeviceName(), pack));
+        return adbService.executeCommand(command);
+    }
+
+    public String dropApp(Device device, String pack) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ABD_UNINSTALL.getCommand(device.getDeviceName(), pack));
+        String output = adbService.executeCommand(command);
+        return output;
+    }
+
+    public String getPathApp(Device device, String pack) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_PACK_PATH.getCommand(device.getDeviceName(), pack));
+        String output = adbService.executeCommand(command);
+        return adbParsers.pareOutputPathBaseApk(output);
+    }
+
+    public String pull(Device device, String from, String to) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_PULL.getCommand(device.getDeviceName(), from, to));
+        String output = adbService.executeCommand(command);
+        return adbParsers.pareOutputPathBaseApk(output);
+    }
+
+    public String install(Device device, String apkPath) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_INSTALL.getCommand(device.getDeviceName(), apkPath));
         return adbService.executeCommand(command);
     }
 }

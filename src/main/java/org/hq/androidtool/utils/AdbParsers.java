@@ -4,6 +4,7 @@ import org.hq.androidtool.config.DevicesState;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -170,5 +171,9 @@ public class AdbParsers {
             data.add( line.split(":")[1].trim() );
         }
         return data;
+    }
+
+    public String pareOutputPathBaseApk(String output) {
+        return output.split("\\n")[0].split(":")[1].trim();
     }
 }

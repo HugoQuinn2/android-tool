@@ -13,15 +13,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="690.0" prefWidth="1060.0" styleClass="root_apps_manager" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppsPageController">
+<AnchorPane prefHeight="559.0" prefWidth="870.0" styleClass="root_apps_manager" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppsPageController">
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" styleClass="pnl_separator_vertical_left" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="100.0" spacing="10.0" styleClass="pnl_separator_horizontal_bottom">
                <children>
-                  <TextField prefHeight="25.0" prefWidth="405.0" />
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" text="Borrar">
+                  <TextField fx:id="txtFilter" prefHeight="25.0" prefWidth="405.0" />
+                  <Region prefHeight="29.0" prefWidth="53.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnDropApp" mnemonicParsing="false" onMouseClicked="#onBtnDropApp" text="Borrar">
                      <graphic>
                         <FontIcon />
                      </graphic>
@@ -30,7 +30,7 @@
                         <String fx:value="button" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" text="Instalar">
+                  <Button fx:id="btnDownloadApp" mnemonicParsing="false" onMouseClicked="#onBtnDownloadApp" text="Descargar">
                      <graphic>
                         <FontIcon />
                      </graphic>
@@ -39,14 +39,10 @@
                         <String fx:value="button" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" text="Descargar">
+                  <Button fx:id="btnInstallApp" mnemonicParsing="false" onMouseClicked="#onBtnInstallApp" styleClass="button-green" text="Instalar">
                      <graphic>
                         <FontIcon />
                      </graphic>
-                     <styleClass>
-                        <String fx:value="button-blue" />
-                        <String fx:value="button" />
-                     </styleClass>
                   </Button>
                </children>
                <padding>
@@ -57,7 +53,7 @@
                <content>
                   <FlowPane fx:id="pnlApplicationManager" hgap="20.0" minWidth="-Infinity" styleClass="apps_container" vgap="20.0">
                      <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </FlowPane>
                </content>

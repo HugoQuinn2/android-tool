@@ -16,7 +16,6 @@ module org.hq.androidtool {
     opens org.hq.androidtool to javafx.fxml;
     exports org.hq.androidtool;
 
-    opens org.hq.androidtool.gui to javafx.fxml;
     opens org.hq.androidtool.controllers to javafx.fxml;
     opens org.hq.androidtool.models to javafx.base;
     opens org.hq.androidtool.controllers.gui to javafx.fxml;
