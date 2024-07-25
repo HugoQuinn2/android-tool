@@ -66,7 +66,7 @@
                   <Label text="Aplicaciones" />
                </children>
             </HBox>
-            <HBox fx:id="pnlFilesPage" alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="298.0" styleClass="menu_opc">
+            <HBox fx:id="pnlFilesPage" onMouseClicked="#onFilesPageButton" alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="298.0" styleClass="menu_opc">
                <children>
                   <FontIcon iconLiteral="bi-folder2" styleClass="icon_menu_bar" />
                   <Label prefWidth="57.0" text="Archivos" />

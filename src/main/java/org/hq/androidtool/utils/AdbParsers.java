@@ -1,7 +1,9 @@
 package org.hq.androidtool.utils;
 
 import org.hq.androidtool.config.DevicesState;
+import org.hq.androidtool.config.FilesType;
 
+import java.security.PublicKey;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -171,4 +173,34 @@ public class AdbParsers {
         }
         return data;
     }
+
+    public List<String> parseOutputFiles(String output) {
+        List<String> lines = List.of(output.split("\n"));
+        List<String> data = new ArrayList<>();
+        String fileType = "";
+
+        for (String line : lines) {
+            List<String> columns = List.of(line.replaceAll("\\s+", " ").split(" "));
+            if (columns.size() >= 8) {
+                fileType = String.valueOf(getFyleType(columns.get(0).replaceAll(" ", "")));
+                String format = String.format("%s,%s,%s,%s,%s", fileType, columns.get(2), columns.get(4), columns.get(5) + " " + columns.get(6), columns.get(7));
+                data.add(format);
+            }
+        }
+
+        return data;
+    }
+
+    private FilesType getFyleType(String file) {
+        if (file.startsWith("d")) {
+            return FilesType.FOLDER;
+        } else if (file.startsWith("-")) {
+            return FilesType.FILE;
+        } else if (file.startsWith("i")) {
+            return FilesType.SYMBOLIC_LINK;
+        }
+
+        return FilesType.INDETERMINATE;
+    }
 }
+

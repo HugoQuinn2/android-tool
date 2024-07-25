@@ -54,6 +54,11 @@ public class MenuBarController {
         guiMainController.loadContent("/org/hq/androidtool/layout/content/AppsPage.fxml", getDeviceByName(deviceName));
     }
 
+    public void onFilesPageButton(MouseEvent event) {
+        String deviceName = chbxDevices.getValue();
+        guiMainController.loadContent("/org/hq/androidtool/layout/content/FilesPage.fxml", getDeviceByName(deviceName));
+    }
+
     public void onReloadButton(MouseEvent event){
         reloadDevices();
     }

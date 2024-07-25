@@ -7,10 +7,7 @@ import org.hq.androidtool.services.AdbService;
 import org.hq.androidtool.utils.AdbCommandBuilder;
 import org.hq.androidtool.utils.AdbParsers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class CommandController {
     private final AdbCommandBuilder adbCommandBuilder;
@@ -124,5 +121,11 @@ public class CommandController {
     public String getPackageInfo(Device device, String pack) {
         List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_PACKAGES_INFO.getCommand(device.getDeviceName(), pack));
         return adbService.executeCommand(command);
+    }
+
+    public List<String> ls(Device device, String path) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_LS.getCommand(device.getDeviceName(), path));
+        String output = adbService.executeCommand(command);
+        return adbParsers.parseOutputFiles(output);
     }
 }

@@ -36,7 +36,6 @@ public class ContactsPageController {
 
     public ContactsPageController (Device device){
         this.device = device;
-
     }
 
     @FXML
