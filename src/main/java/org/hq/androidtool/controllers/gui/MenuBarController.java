@@ -61,6 +61,7 @@ public class MenuBarController {
 
     private void reloadDevices(){
         this.deviceList = this.deviceController.getDevices();
+        chbxDevices.getItems().clear();
 
         for ( Device device : deviceList ) {
             if ( !isDeviceAvailable(device) ) {
@@ -96,7 +97,6 @@ public class MenuBarController {
                 return device;
             }
         }
-
         return null;
     }
 }
