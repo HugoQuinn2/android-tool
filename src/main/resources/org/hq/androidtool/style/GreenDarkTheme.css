@@ -47,72 +47,32 @@
     -fx-text-fill: white;
 }
 
-.button:hover {
-    -fx-cursor: hand;
-    -fx-background-color: #8F9C88;
-}
-
-.button-red:pressed, .button-red:hover, .button-red {
-    -fx-background-color: #F44336;
-    -fx-text-fill: #FFFFFF;
-    -fx-border-color: #C62828;
-}
-
-.button-blue:pressed, .button-blue:hover, .button-blue {
-    -fx-background-color: #2196F3;
-        -fx-text-fill: #FFFFFF;
-        -fx-border-color: #1976D2;
-}
-
-.button-green:pressed, .button-green:hover, .button-green {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: #FFFFFF;
-    -fx-border-color: #388E3C;
-}
-
-.no-button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0px;
-    -fx-font-size: 18px;
-}
-
-.no-button:hover {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0px;
-}
-
-.no-button FontIcon {
-    -fx-icon-color: white;
-    -fx-icon-size: 20px;
-}
-/* Cards style */
-.card {
+.button-blue {
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-border-color: #414D42;
-    -fx-background-color: #2F3E31;
-    -fx-border-width: 2px;
-    -fx-padding: 10px;
-}
-.card .label {
-    -fx-text-fill: #E0E0E0;
+    -fx-background-color: #457EB4;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-text-fill: white;
 }
 
-.card-sub-info{
-    -fx-font-size: 10px;
+.button-green {
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #45B47E;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-text-fill: white;
 }
 
-.card-title{
-    -fx-font-size: 16px;
+.button:pressed {
+    -fx-effect: none;
+    -fx-border-color: transparent;
 }
 
-.card-selected {
-    -fx-background-color: #2F3E31;
-    -fx-border-color: #8F9C88;
-    -fx-border-width: 4px;
-    -fx-padding: 8px;
+.button:hover {
+    -fx-cursor: hand;
+    -fx-effect: none;
 }
 
 /* Icons style */
@@ -204,4 +164,9 @@
 .pnl-history Label{
     -fx-font-size: 18px;
     -fx-text-fill: white;
+}
+
+/* Events Style */
+.selected-panel {
+    -fx-background-color: #457EB4;
 }

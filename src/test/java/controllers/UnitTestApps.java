@@ -1,5 +1,6 @@
 package controllers;
 
+import org.hq.androidtool.controllers.AppsController;
 import org.hq.androidtool.controllers.CommandController;
 import org.hq.androidtool.controllers.DeviceController;
 import org.hq.androidtool.models.Device;
@@ -10,6 +11,7 @@ import java.util.List;
 public class UnitTestApps {
     private CommandController commandController;
     private DeviceController deviceController;
+    private AppsController appsController;
 
     @Test
     void getPackages(){
@@ -19,6 +21,9 @@ public class UnitTestApps {
         List<Device> devices = deviceController.getDevices();
         List<String> packs = commandController.getPackages(devices.get(0));
 
-        System.out.println(commandController.getPackageInfo(devices.get(0), packs.get(2)));
+        appsController = new AppsController(devices.get(0));
+
+
+        System.out.println(appsController.getApplications());
     }
 }
