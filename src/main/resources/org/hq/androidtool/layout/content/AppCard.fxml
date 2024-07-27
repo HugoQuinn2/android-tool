@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="123.0" prefWidth="152.0" styleClass="card" stylesheets="@../../style/GreenDarkTheme.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppCardController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="123.0" prefWidth="152.0" styleClass="card" stylesheets="@../../style/GreenDarkTheme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppCardController">
    <children>
       <FontIcon iconLiteral="bi-card-image" styleClass="icon-transparent" />
       <Label fx:id="lblAppName" prefHeight="20.0" prefWidth="160.0" styleClass="card-title" text="app-name">
