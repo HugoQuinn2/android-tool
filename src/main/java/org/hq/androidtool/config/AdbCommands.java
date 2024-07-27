@@ -19,7 +19,7 @@ public enum AdbCommands{
     ADB_PACKAGES_INFO   ("-s %s shell dumpsys package %s"),
     ADB_PS              ("-s %s shell ps"),
     ADB_TOP             ("-s %s shell top -n 1"),
-    ADB_LS              ("-s %s shell ls -l %s");
+    ADB_LS              ("-s %s shell cd %s && ls -l");
 
     private final String command;
 

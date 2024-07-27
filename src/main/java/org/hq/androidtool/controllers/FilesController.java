@@ -26,27 +26,23 @@ public class FilesController {
         String formato = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(formato);
 
-        if (!filesFormat.isEmpty()) {
-            try {
-                for (String fileFormat : filesFormat) {
-                    String[] data = fileFormat.split(",");
-                    files.add(
-                            File
-                                    .builder()
-                                    .fileType(getFileType(data[0]))
-                                    .user(data[1])
-                                    .size(data[2])
-                                    .date(isValidDate(data[3], sdf) ? sdf.parse(data[3]) : null )
-                                    .name(data[4])
-                                    .build()
-                    );
-                }
-
-                return files;
-            } catch (ParseException e) {
-                System.err.println(e.getMessage());
-                return null;
+        if (filesFormat != null) {
+            for (String fileFormat : filesFormat) {
+                String[] data = fileFormat.split(",");
+                files.add(
+                        File
+                                .builder()
+                                .fileType(getFileType(data[0]))
+                                .user(data[1])
+                                .size(data[2])
+                                .date(data[3])
+                                .name(data[4])
+                                .path(path)
+                                .build()
+                );
             }
+
+            return files;
         }
 
         return null;
