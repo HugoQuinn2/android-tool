@@ -4,6 +4,9 @@ package org.hq.androidtool.controllers;
 import org.hq.androidtool.models.Contact;
 import org.hq.androidtool.models.Device;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +43,24 @@ public class ContactsControllers {
 
     public void callPhone(Device device, String number){
         commandController.callPhone(device, number);
+    }
+
+    public boolean exportToCSV(List<Contact> contacts, String csvPath) {
+        File file = new File(csvPath);
+
+        try (PrintWriter writer = new PrintWriter(new PrintWriter(file))) {
+            writer.println("ID, name, phone, email");
+
+            for (Contact contact : contacts) {
+                writer.printf("%d,%s,%s,%s%n", contact.getId(), contact.getName(), contact.getPhone(), contact.getEmail());
+            }
+
+            return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

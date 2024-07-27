@@ -18,7 +18,7 @@
                   <TextField fx:id="txtFilterContacts" prefHeight="29.0" prefWidth="342.0" />
                   <Region prefHeight="29.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
                   <Button fx:id="btnDropContact" mnemonicParsing="false" onMouseClicked="#onBtnDropContact" styleClass="button-red" text="Borrar" />
-                  <Button fx:id="btnExportContacts" mnemonicParsing="false"  styleClass="button-blue" text="Exportar" />
+                  <Button fx:id="btnExportContacts" mnemonicParsing="false" onMouseClicked="#onBtnExportContacts" styleClass="button-blue" text="Exportar" />
                   <Button fx:id="btnCallContact" mnemonicParsing="false" onMouseClicked="#onBtnCallContact" styleClass="button-green" text="Llamar" />
                </children>
                <VBox.margin>

@@ -156,27 +156,27 @@ public class ContactsPageController {
         }
     }
 
-//    public void onBtnExportContacts(MouseEvent event) {
-//        if (tblContacts.getItems() != null) {
-//            File file = (new DirectoryChooser()).showDialog(new Stage());
-//            if (file != null) {
-//                if (contactsControllers.exportToCSV(contacts, file.getAbsolutePath() + File.separator + "contacts.csv")) {
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Exportacion de contactos");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("Exportacion Exitosa");
-//                    alert.showAndWait();
-//
-//                    return;
-//                }
-//            }
-//        }
-//
-//        Alert alert = new Alert(Alert.AlertType.ERROR);
-//        alert.setTitle("Exportacion de contactos");
-//        alert.setHeaderText(null);
-//        alert.setContentText("No se pudo exportar los contactos");
-//        alert.showAndWait();
-//    }
+    public void onBtnExportContacts(MouseEvent event) {
+        if (tblContacts.getItems() != null) {
+            File file = (new DirectoryChooser()).showDialog(new Stage());
+            if (file != null) {
+                if (contactsControllers.exportToCSV(contacts, file.getAbsolutePath() + File.separator + "contacts.csv")) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Exportacion de contactos");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Exportacion Exitosa");
+                    alert.showAndWait();
+
+                    return;
+                }
+            }
+        }
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Exportacion de contactos");
+        alert.setHeaderText(null);
+        alert.setContentText("No se pudo exportar los contactos");
+        alert.showAndWait();
+    }
 
 }
