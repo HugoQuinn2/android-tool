@@ -147,4 +147,10 @@ public class CommandController {
         List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_INSTALL.getCommand(device.getDeviceName(), apkPath));
         return adbService.executeCommand(command);
     }
+
+    public List<String> ls(Device device, String path) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_LS.getCommand(device.getDeviceName(), path));
+        String output = adbService.executeCommand(command);
+        return adbParsers.parseOutputFiles(output);
+    }
 }

@@ -22,7 +22,8 @@ public enum AdbCommands{
     ABD_UNINSTALL       ("-s %s uninstall %s"),
     ADB_INSTALL         ("-s %s install %s"),
     ADB_PACK_PATH       ("-s %s shell pm path %s"),
-    ADB_PULL            ("-s %s pull %s %s");
+    ADB_PULL            ("-s %s pull %s %s"),
+    ADB_LS              ("-s %s shell cd %s && ls -l");
 
     private final String command;
 

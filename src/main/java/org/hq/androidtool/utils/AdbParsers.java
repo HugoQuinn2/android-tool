@@ -202,5 +202,9 @@ public class AdbParsers {
 
         return FilesType.INDETERMINATE;
     }
+
+    public String pareOutputPathBaseApk(String output) {
+        return output.split("\\n")[0].split(":")[1].trim();
+    }
 }
 
