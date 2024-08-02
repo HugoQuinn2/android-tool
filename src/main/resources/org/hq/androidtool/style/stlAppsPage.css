@@ -1,0 +1,23 @@
+/* Menu Options */
+.menu-panel {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.menu-panel .button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.menu-panel FontIcon {
+    -fx-icon-size: 20px;
+}
+
+.pnl-app-image {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+ScrollPane {
+    -fx-border-width: 0px 0px 1px 0px;
+}

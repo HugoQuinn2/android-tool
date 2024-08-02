@@ -84,14 +84,14 @@ public class FilesPageControllers {
         userColumn.setMaxWidth(100);
         userColumn.setMinWidth(100);
 
-        dateColumn.setMaxWidth(200);
-        dateColumn.setMinWidth(200);
+        dateColumn.setMaxWidth(150);
+        dateColumn.setMinWidth(150);
 
         sizeColumn.setMaxWidth(100);
         sizeColumn.setMinWidth(100);
 
-        pathColumn.setMaxWidth(200);
-        pathColumn.setMinWidth(200);
+        pathColumn.setMaxWidth(250);
+        pathColumn.setMinWidth(250);
     }
     private void createSpecialEventsTableFiles(){
         fileTypeColumn.setCellFactory(column -> new TableCell<File, FontIcon>() {
@@ -178,11 +178,14 @@ public class FilesPageControllers {
             if (!newFiles.isEmpty()) {
 
                 Button history = new Button(item.getName());
-                Label next = new Label(">");
+                Label next = new Label("/");
 
                 idButtonHistory ++;
+
+                next.getStyleClass().add("important-text");
+
                 history.setId(idButtonHistory + "," + newPath);
-                history.getStyleClass().add("no-button");
+                history.getStyleClass().add("link-button");
                 history.setOnAction(event -> noButtonReturn(history.getId()));
 
                 pnlHistory.getChildren().addAll(next, history);
