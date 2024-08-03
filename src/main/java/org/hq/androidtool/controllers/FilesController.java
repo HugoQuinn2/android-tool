@@ -1,5 +1,6 @@
 package org.hq.androidtool.controllers;
 
+import javafx.concurrent.Task;
 import org.hq.androidtool.config.FilesType;
 import org.hq.androidtool.models.Device;
 import org.hq.androidtool.models.FileDevice;
@@ -13,6 +14,7 @@ public class FilesController {
     private CommandController commandController;
     private AdbCommandFiles adbCommandFiles;
     private Device device;
+    private Task pull;
 
     public FilesController(Device device) {
         commandController = new CommandController();
@@ -61,13 +63,8 @@ public class FilesController {
     }
 
     public boolean pull(FileDevice fileDevice, String to){
-        if (fileDevice.getFileType() == FilesType.FILE) {
-            String filePath = fileDevice.getPath() + "/" + fileDevice.getName();
-
-            return adbCommandFiles.pull(device, filePath, to);
-        }
-
-        return false;
+        String filePath = fileDevice.getPath() +  fileDevice.getName();
+        return adbCommandFiles.pull(device, filePath, to);
     }
 
 //    public boolean push(String from, String to) {

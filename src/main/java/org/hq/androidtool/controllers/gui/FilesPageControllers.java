@@ -1,6 +1,8 @@
 package org.hq.androidtool.controllers.gui;
 
 import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +10,8 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -17,6 +21,7 @@ import org.hq.androidtool.models.Contact;
 import org.hq.androidtool.models.Device;
 import org.hq.androidtool.models.FileDevice;
 
+import org.hq.androidtool.services.PullTaskService;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 
@@ -30,6 +35,8 @@ public class FilesPageControllers {
     private HBox pnlHistory;
     @FXML
     private Button btnRootFiles;
+    @FXML
+    private TextField txtFilter;
 
     private Device device;
     private FilesController filesController;
@@ -52,8 +59,10 @@ public class FilesPageControllers {
     @FXML
     public void initialize(){
         fileDevices = filesController.getFilesFrom("/");
+
         createTableFiles();
         fillData();
+        initFilter();
 
         btnRootFiles.setId("0,/");
         btnRootFiles.setOnAction(event -> noButtonReturn(btnRootFiles.getId()));
@@ -98,6 +107,7 @@ public class FilesPageControllers {
         pathColumn.setMinWidth(250);
     }
     private void createSpecialEventsTableFiles(){
+        // Define icon file per row
         fileTypeColumn.setCellFactory(column -> new TableCell<FileDevice, FontIcon>() {
             @Override
             protected void updateItem(FontIcon item, boolean empty) {
@@ -113,8 +123,23 @@ public class FilesPageControllers {
             }
         });
 
+        // Double-click on row for browse public folders
         tblFiles.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
+                TablePosition<?, ?> pos = tblFiles.getSelectionModel().getSelectedCells().get(0);
+                int row = pos.getRow();
+                int column = pos.getColumn();
+
+                FileDevice selectedItem = tblFiles.getItems().get(row);
+                String selectedColumnName = tblFiles.getColumns().get(column).getText();
+
+                handleCellDoubleClick(selectedItem, selectedColumnName);
+            }
+        });
+
+        // KeyEvent Enter on row for browse public folders
+        tblFiles.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.ENTER) {
                 TablePosition<?, ?> pos = tblFiles.getSelectionModel().getSelectedCells().get(0);
                 int row = pos.getRow();
                 int column = pos.getColumn();
@@ -201,6 +226,34 @@ public class FilesPageControllers {
             }
         }
     }
+    private void initFilter() {
+        txtFilter.setPromptText("Buscar...");
+        txtFilter.textProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                String filterText = txtFilter.textProperty().get().toLowerCase();
+
+                if (filterText.isEmpty()){
+                    tblFiles.setItems(fileDeviceObservableList);
+                    return;
+                }
+
+                ObservableList<FileDevice> newFileDeviceObservableList = FXCollections.observableArrayList();
+                ObservableList<TableColumn<FileDevice, ?>> cols = tblFiles.getColumns();
+
+                for (FileDevice fileDevice : fileDevices){
+                    for (TableColumn<FileDevice, ?> column : cols){
+                        String cellValue = column.getCellData(fileDevice).toString();
+                        if (!cellValue.isEmpty() && cellValue.toLowerCase().contains(filterText)) {
+                            newFileDeviceObservableList.add(fileDevice);
+                        }
+                    }
+                }
+
+                tblFiles.setItems(newFileDeviceObservableList);
+            }
+        });
+    }
 
     private void noButtonReturn(String idButton){
 
@@ -223,17 +276,15 @@ public class FilesPageControllers {
     }
     public void onButtonExport() {
         FileDevice fileDevice = tblFiles.getSelectionModel().getSelectedItem();
-        File file = (new DirectoryChooser()).showDialog(new Stage());
 
-        if (file != null) {
-            if (filesController.pull(fileDevice, file.getAbsolutePath())) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Extraccion de aplicacion");
-                alert.setHeaderText(null);
-                alert.setContentText("El archivo " + fileDevice.getName() + " se descargo correctamente");
-                alert.showAndWait();
+        if (fileDevice != null) {
+            File file = (new DirectoryChooser()).showDialog(new Stage());
+            if (file != null) {
+                PullTaskService pullTaskService = new PullTaskService(device, fileDevice, file.getAbsolutePath());
+                pullTaskService.start();
             }
         }
+
     }
     public void onButtonNewFolder() {
 
@@ -241,4 +292,5 @@ public class FilesPageControllers {
     public void onButtonSend() {
 
     }
+
 }

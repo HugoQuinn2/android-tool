@@ -11,6 +11,7 @@ module org.hq.androidtool {
     requires java.desktop;
     requires java.net.http;
     requires com.google.gson;
+    requires org.controlsfx.controls;
 
 
     opens org.hq.androidtool to javafx.fxml;

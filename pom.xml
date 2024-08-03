@@ -45,6 +45,11 @@
       <version>1.18.32</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.controlsfx</groupId>
+      <artifactId>controlsfx</artifactId>
+      <version>11.2.1</version>
+    </dependency>
     <!-- ikonli -->
     <dependency>
       <groupId>org.kordamp.ikonli</groupId>

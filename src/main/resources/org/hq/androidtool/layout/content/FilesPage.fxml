@@ -14,7 +14,7 @@
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="810.0" spacing="10.0" styleClass="body" stylesheets="@../../style/stlFilesPage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField maxWidth="500.0" prefHeight="31.0" prefWidth="400.0" />
+            <TextField fx:id="txtFilter" maxWidth="500.0" prefHeight="31.0" prefWidth="400.0" />
             <HBox fx:id="pnlHistory" alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="823.0" spacing="10.0" styleClass="pnl-history">
                <children>
                   <Button fx:id="btnRootFiles" mnemonicParsing="false" prefHeight="39.0" prefWidth="61.0" styleClass="link-button" text="root">
@@ -26,19 +26,19 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="863.0" spacing="5.0" styleClass="menu-panel">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onButtonSend" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
+                  <Button fx:id="btnPush" mnemonicParsing="false" onAction="#onButtonSend" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-download" />
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#onButtonExport" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
+                  <Button fx:id="btnPull" mnemonicParsing="false" onAction="#onButtonExport" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-upload" />
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#onButtonNewFolder" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
+                  <Button fx:id="btnNewFolder" mnemonicParsing="false" onAction="#onButtonNewFolder" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-folder-plus" />
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#onButtonDrop" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
+                  <Button fx:id="btnDrop" mnemonicParsing="false" onAction="#onButtonDrop" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-trash" />
                      </graphic></Button>
