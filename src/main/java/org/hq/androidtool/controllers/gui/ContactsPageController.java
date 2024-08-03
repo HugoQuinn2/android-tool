@@ -5,12 +5,13 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import org.hq.androidtool.controllers.ContactsControllers;
@@ -28,11 +29,9 @@ public class ContactsPageController {
     @FXML
     private TextField txtFilterContacts;
     @FXML
-    private Button btnCallContact;
+    private GridPane pnlButtonsPhone;
     @FXML
-    private Button btnDropContact;
-    @FXML
-    private Button btnExportContacts;
+    private TextField txtVirtualPhone;
 
     private Device device;
     private ContactsControllers contactsControllers;
@@ -43,7 +42,6 @@ public class ContactsPageController {
     private TableColumn<Contact, String> nameColumn;
     private TableColumn<Contact, String> emailColumn;
     private TableColumn<Contact, String> phoneColumn;
-    private final static int rowsPerPage = 20;
 
     public ContactsPageController (Device device){
         this.device = device;
@@ -52,15 +50,18 @@ public class ContactsPageController {
     @FXML
     public void initialize(){
         this.contactsControllers = new ContactsControllers();
-        contacts = contactsControllers.getContacts(device);
-
         createTableContacts();
-        createListenerSizeTableContacts();
+//        createButtonPhone();
         fillData();
         initFilter();
     }
 
     private void createTableContacts() {
+        createColumns();
+        createSizeColumns();
+        tblContacts.getColumns().addAll(idColumn, nameColumn, phoneColumn, emailColumn);
+    }
+    private void createColumns(){
         idColumn = new TableColumn<>("ID");
         nameColumn = new TableColumn<>("Nombre");
         emailColumn = new TableColumn<>("Email");
@@ -70,21 +71,77 @@ public class ContactsPageController {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+    }
+    private void createSizeColumns(){
+        idColumn.setMaxWidth(60);
+        idColumn.setMinWidth(60);
 
-        //idColumn.setMaxWidth(50);
-        //idColumn.setMinWidth(50);
+        phoneColumn.setMinWidth(150);
+        phoneColumn.setMaxWidth(150);
 
-        nameColumn.setResizable(false);
-        emailColumn.setResizable(false);
-        phoneColumn.setResizable(false);
+        emailColumn.setMaxWidth(150);
+        emailColumn.setMinWidth(150);
+    }
+    private void createButtonPhone(){
+        int buttons = 9;
+        int columns = 3;
 
-        tblContacts.getColumns().addAll(idColumn, nameColumn, phoneColumn, emailColumn);
+        int actualRow = 1;
+        int actualColumn = 1;
+
+        for (int i = 1 ; i <= buttons; i++){
+            Button button = new Button(String.valueOf( i ));
+
+            button.setOnAction(event -> {
+                String text = txtVirtualPhone.getText();
+                txtVirtualPhone.setText( text + button.getText());
+            });
+
+            pnlButtonsPhone.add(button, actualColumn, actualRow);
+
+            if (i % columns == 0) {
+                actualRow++;
+                actualColumn = 1;
+            } else {
+                actualColumn++;
+            }
+        }
+
+        Button buttonCall = new Button("call");
+        Button buttonPlus = new Button("+");
+        Button buttonGat = new Button("#");
+        Button buttonHash = new Button("*");
+        Button buttonCero = new Button("0");
+
+        buttonPlus.setOnAction(event -> {
+            String text = txtVirtualPhone.getText();
+            txtVirtualPhone.setText( text + buttonPlus.getText());
+        });
+
+        buttonGat.setOnAction(event -> {
+            String text = txtVirtualPhone.getText();
+            txtVirtualPhone.setText( text + buttonGat.getText());
+        });
+
+        buttonHash.setOnAction(event -> {
+            String text = txtVirtualPhone.getText();
+            txtVirtualPhone.setText( text + buttonHash.getText());
+        });
+        buttonCero.setOnAction(event -> {
+            String text = txtVirtualPhone.getText();
+            txtVirtualPhone.setText( text + buttonCero.getText());
+        });
+
+        pnlButtonsPhone.add(buttonGat, 1, 4);
+        pnlButtonsPhone.add(buttonCero, 2, 4);
+        pnlButtonsPhone.add(buttonHash, 3, 4);
     }
 
     private void fillData() {
         Task<List<Contact>> task = new Task<>() {
             @Override
             protected List<Contact> call() throws Exception {
+                contacts = contactsControllers.getContacts(device);
                 contactObservableList = FXCollections.observableArrayList(contacts);
                 tblContacts.setItems( contactObservableList );
                 return null;
@@ -101,21 +158,6 @@ public class ContactsPageController {
         thread.setDaemon(true);
         thread.start();
     }
-
-    private void createListenerSizeTableContacts() {
-        tblContacts.widthProperty().addListener((obs, oldWidth, newWidth) -> {
-            double totalWidth = newWidth.doubleValue();
-            double idColumnWidth = 0;
-            double availableWidth = totalWidth - idColumnWidth;
-
-            double remainingColumnWidth = availableWidth / (tblContacts.getColumns().size());
-
-            for (TableColumn<Contact, ?> column : tblContacts.getColumns()) {
-                column.setPrefWidth(remainingColumnWidth);
-            }
-        });
-    }
-
     private void initFilter() {
         txtFilterContacts.setPromptText("Buscar...");
         txtFilterContacts.textProperty().addListener(new InvalidationListener() {
@@ -148,14 +190,12 @@ public class ContactsPageController {
     public void onBtnDropContact(MouseEvent event) {
 
     }
-
     public void onBtnCallContact(MouseEvent event) {
         Contact selectedContact = tblContacts.getSelectionModel().getSelectedItem();
         if (selectedContact != null) {
             contactsControllers.callPhone(device, selectedContact.getPhone());
         }
     }
-
     public void onBtnExportContacts(MouseEvent event) {
         if (tblContacts.getItems() != null) {
             File file = (new DirectoryChooser()).showDialog(new Stage());

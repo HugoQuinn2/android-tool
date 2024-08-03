@@ -2,26 +2,26 @@ package org.hq.androidtool.controllers;
 
 import org.hq.androidtool.config.FilesType;
 import org.hq.androidtool.models.Device;
-import org.hq.androidtool.models.File;
+import org.hq.androidtool.models.FileDevice;
+import org.hq.androidtool.utils.AdbCommandFiles;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class FilesController {
     private CommandController commandController;
+    private AdbCommandFiles adbCommandFiles;
     private Device device;
 
     public FilesController(Device device) {
         commandController = new CommandController();
+        adbCommandFiles = new AdbCommandFiles();
         this.device = device;
     }
 
-    public List<File> getFilesFrom(String path) {
-        List<File> files = new ArrayList<>();
+    public List<FileDevice> getFilesFrom(String path) {
+        List<FileDevice> fileDevices = new ArrayList<>();
         List<String> filesFormat = commandController.ls(device, path);
         String formato = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(formato);
@@ -29,8 +29,8 @@ public class FilesController {
         if (filesFormat != null) {
             for (String fileFormat : filesFormat) {
                 String[] data = fileFormat.split(",");
-                files.add(
-                        File
+                fileDevices.add(
+                        FileDevice
                                 .builder()
                                 .fileType(getFileType(data[0]))
                                 .user(data[1])
@@ -42,7 +42,7 @@ public class FilesController {
                 );
             }
 
-            return files;
+            return fileDevices;
         }
 
         return null;
@@ -60,12 +60,18 @@ public class FilesController {
         return FilesType.INDETERMINATE;
     }
 
-    private static boolean isValidDate(String date, SimpleDateFormat sdf) {
-        try {
-            sdf.parse(date);
-            return true;
-        } catch (ParseException e) {
-            return false;
+    public boolean pull(FileDevice fileDevice, String to){
+        if (fileDevice.getFileType() == FilesType.FILE) {
+            String filePath = fileDevice.getPath() + "/" + fileDevice.getName();
+
+            return adbCommandFiles.pull(device, filePath, to);
         }
+
+        return false;
     }
+
+//    public boolean push(String from, String to) {
+//
+//    }
+
 }

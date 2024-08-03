@@ -2,19 +2,24 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="123.0" prefWidth="152.0" styleClass="card" stylesheets="@../../style/GreenDarkTheme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppCardController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="150.0" spacing="10.0" styleClass="pnl-app" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppCardController">
    <children>
-      <FontIcon iconLiteral="bi-card-image" styleClass="icon-transparent" />
-      <Label fx:id="lblAppName" prefHeight="20.0" prefWidth="160.0" styleClass="card-title" text="app-name">
+      <AnchorPane prefHeight="180.0" prefWidth="180.0" styleClass="pnl-app-image">
+         <children>
+            <FontIcon iconLiteral="bi-card-image" iconSize="100" layoutX="13.0" layoutY="114.0" styleClass="icon-transparent" text="" wrappingWidth="104.0" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="lblAppName" alignment="CENTER" prefHeight="20.0" prefWidth="160.0" styleClass="important-text" text="app-name" VBox.vgrow="ALWAYS">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblAppPack" prefHeight="13.0" prefWidth="153.0" styleClass="card-sub-info" text="app-package">
+      <Label fx:id="lblAppPack" alignment="CENTER" prefHeight="13.0" prefWidth="150.0" styleClass="body-text" text="app-package" VBox.vgrow="ALWAYS">
          <font>
             <Font size="9.0" />
          </font></Label>

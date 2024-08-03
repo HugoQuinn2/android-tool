@@ -1,0 +1,33 @@
+.menu_opc:hover {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.body-menu-bar {
+    -fx-max-width: 180px;
+}
+
+.menu_opc FontIcon {
+    -fx-icon-size: 25px;
+}
+
+.menu-opc .label {
+    -fx-font-size: 50px;
+}
+
+.pnl-devices FontIcon{
+    -fx-icon-size: 20px;
+}
+
+.pnl-cbox {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+ComboBox {
+    -fx-font-size: 12px;
+}
+
+.separator-top-bottom {
+    -fx-border-width: 1px 0px 1px 0px;
+}

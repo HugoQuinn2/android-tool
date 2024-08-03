@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -7,15 +8,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox maxWidth="-Infinity" minHeight="500.0" prefHeight="1000.0" prefWidth="250.0" styleClass="menu_bar" stylesheets="@../../style/style_menu_bar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.MenuBarController">
+<VBox maxWidth="180.0" minHeight="500.0" minWidth="180.0" prefHeight="864.0" prefWidth="180.0" spacing="10.0" styleClass="body-menu-bar" stylesheets="@../../style/stlMenuBar.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.MenuBarController">
    <children>
-      <VBox prefHeight="0.0" prefWidth="180.0">
+      <VBox prefHeight="0.0" prefWidth="180.0" styleClass="pnl-devices">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="devices_manager">
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="230.0">
                <children>
-                  <ComboBox fx:id="chbxDevices" prefWidth="150.0" styleClass="devices_manager_list" />
+                  <ComboBox fx:id="chbxDevices" prefHeight="27.0" prefWidth="234.0" styleClass="devices_manager_list" />
                   <Region prefHeight="21.0" prefWidth="26.0" />
                   <Button fx:id="app_reload_state" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0" styleClass="menu_bar_button">
                      <graphic>
@@ -26,6 +28,13 @@
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
+               <styleClass>
+                  <String fx:value="devices_manager" />
+                  <String fx:value="pnl-cbox" />
+               </styleClass>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
@@ -35,7 +44,6 @@
                         <FontIcon iconLiteral="bi-gear" styleClass="icon_menu_config" />
                      </graphic>
                   </Button>
-                  <Button fx:id="app_info" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" styleClass="menu_bar_button" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
@@ -46,43 +54,76 @@
             <Insets />
          </VBox.margin>
       </VBox>
-      <VBox minHeight="100.0" prefHeight="1000.0" prefWidth="230.0" styleClass="menu_bar_opc">
+      <VBox minHeight="100.0" prefHeight="883.0" prefWidth="160.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox fx:id="pnlMenuPage" alignment="CENTER_LEFT" layoutX="10.0" layoutY="96.0" onMouseClicked="#onMenuButton" prefHeight="34.0" prefWidth="298.0" styleClass="menu_opc">
+            <HBox fx:id="pnlMenuPage" alignment="CENTER_LEFT" layoutX="10.0" layoutY="96.0" onMouseClicked="#onMenuButton" prefHeight="34.0" prefWidth="298.0" spacing="10.0" styleClass="menu_opc">
                <children>
                   <FontIcon iconLiteral="bi-house" styleClass="icon_menu_bar" />
-                  <Label prefHeight="33.0" prefWidth="67.0" text="Menu" />
+                  <Label prefHeight="33.0" prefWidth="170.0" text="Menu" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </HBox>
-            <HBox fx:id="pnlContactPage" alignment="CENTER_LEFT" layoutX="10.0" layoutY="78.0" onMouseClicked="#onContactsPage" prefHeight="34.0" prefWidth="298.0" styleClass="menu_opc">
+            <HBox fx:id="pnlContactPage" alignment="CENTER_LEFT" layoutX="10.0" layoutY="78.0" onMouseClicked="#onContactsPage" prefHeight="34.0" prefWidth="298.0" spacing="10.0" styleClass="menu_opc">
                <children>
                   <FontIcon iconLiteral="bi-people" styleClass="icon_menu_bar" />
-                  <Label prefHeight="33.0" prefWidth="67.0" text="Contactos" />
+                  <Label prefHeight="33.0" prefWidth="180.0" text="Contactos" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </HBox>
-            <HBox fx:id="pnlAppsPage" alignment="CENTER_LEFT" layoutX="10.0" layoutY="21.0" onMouseClicked="#onAppsPageButton" prefHeight="34.0" prefWidth="298.0" styleClass="menu_opc">
+            <HBox fx:id="pnlAppsPage" alignment="CENTER_LEFT" layoutX="10.0" layoutY="21.0" onMouseClicked="#onAppsPageButton" prefHeight="34.0" prefWidth="298.0" spacing="10.0" styleClass="menu_opc">
                <children>
                   <FontIcon iconLiteral="bi-grid" styleClass="icon_menu_bar" />
-                  <Label text="Aplicaciones" />
+                  <Label text="Aplicaciones" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </HBox>
-            <HBox fx:id="pnlFilesPage" onMouseClicked="#onFilesPageButton" alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="298.0" styleClass="menu_opc">
+            <HBox fx:id="pnlFilesPage" alignment="CENTER_LEFT" onMouseClicked="#onFilesPageButton" prefHeight="33.0" prefWidth="298.0" spacing="10.0" styleClass="menu_opc">
                <children>
                   <FontIcon iconLiteral="bi-folder2" styleClass="icon_menu_bar" />
-                  <Label prefWidth="57.0" text="Archivos" />
+                  <Label prefHeight="17.0" prefWidth="210.0" text="Archivos">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </HBox>
          </children>
-      </VBox>
-      <HBox prefHeight="61.0" prefWidth="278.0">
-         <children>
-            <Label styleClass="powered_by" text="Powered by: @hugoquinn" />
-            <Region prefHeight="17.0" prefWidth="4.0" HBox.hgrow="ALWAYS" />
-            <Label fx:id="lbl_app_version" styleClass="powered_by" text="vx.x" />
-         </children>
+         <styleClass>
+            <String fx:value="menu_bar_opc" />
+            <String fx:value="separator-top-bottom" />
+         </styleClass>
          <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets top="10.0" />
          </padding>
-      </HBox>
+      </VBox>
+      <VBox prefHeight="42.0" prefWidth="160.0">
+         <children>
+            <Label prefWidth="134.0" styleClass="legal" text="Powered by: @hugoquinn" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="lbl_app_version" styleClass="legal" text="vx.x" />
+         </children>
+      </VBox>
    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </VBox>

@@ -1,0 +1,47 @@
+/* Table View */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view FontIcon {
+    -fx-icon-size: 24px;
+}
+
+.table-view .column-header {
+    -fx-margin: 10px;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+
+.table-view .column-header .label {
+    -fx-alignment: CENTER-LEFT;
+    -fx-font-size: 16px;
+    -fx-border-width: 0px;
+    -fx-width: 100%
+}
+
+.table-row-cell{
+    -fx-padding: 5px;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+
+.table-view .table-cell{
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER-LEFT;
+    -fx-border-color: transparent;
+}
+
+/* Menu Options */
+.menu-panel {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.menu-panel .button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.menu-panel FontIcon{
+    -fx-icon-size: 20px;
+}

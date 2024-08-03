@@ -9,19 +9,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 import org.hq.androidtool.config.FilesType;
 import org.hq.androidtool.controllers.FilesController;
 import org.hq.androidtool.models.Contact;
 import org.hq.androidtool.models.Device;
-import org.hq.androidtool.models.File;
+import org.hq.androidtool.models.FileDevice;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
+
+import java.io.File;
 import java.util.List;
 
 public class FilesPageControllers {
     @FXML
-    private TableView<File> tblFiles;
+    private TableView<FileDevice> tblFiles;
     @FXML
     private HBox pnlHistory;
     @FXML
@@ -29,16 +33,16 @@ public class FilesPageControllers {
 
     private Device device;
     private FilesController filesController;
-    private List<File> files;
-    private ObservableList<File> fileObservableList;
+    private List<FileDevice> fileDevices;
+    private ObservableList<FileDevice> fileDeviceObservableList;
     private int idButtonHistory = 0;
 
-    private TableColumn<File, String> nameColumn;
-    private TableColumn<File, String> userColumn;
-    private TableColumn<File, String> sizeColumn;
-    private TableColumn<File, String> dateColumn;
-    private TableColumn<File, FontIcon> fileTypeColumn;
-    private TableColumn<File, String> pathColumn;
+    private TableColumn<FileDevice, String> nameColumn;
+    private TableColumn<FileDevice, String> userColumn;
+    private TableColumn<FileDevice, String> sizeColumn;
+    private TableColumn<FileDevice, String> dateColumn;
+    private TableColumn<FileDevice, FontIcon> fileTypeColumn;
+    private TableColumn<FileDevice, String> pathColumn;
 
     public FilesPageControllers(Device device) {
         this.device = device;
@@ -47,7 +51,7 @@ public class FilesPageControllers {
 
     @FXML
     public void initialize(){
-        files = filesController.getFilesFrom("/");
+        fileDevices = filesController.getFilesFrom("/");
         createTableFiles();
         fillData();
 
@@ -84,17 +88,17 @@ public class FilesPageControllers {
         userColumn.setMaxWidth(100);
         userColumn.setMinWidth(100);
 
-        dateColumn.setMaxWidth(200);
-        dateColumn.setMinWidth(200);
+        dateColumn.setMaxWidth(150);
+        dateColumn.setMinWidth(150);
 
         sizeColumn.setMaxWidth(100);
         sizeColumn.setMinWidth(100);
 
-        pathColumn.setMaxWidth(200);
-        pathColumn.setMinWidth(200);
+        pathColumn.setMaxWidth(250);
+        pathColumn.setMinWidth(250);
     }
     private void createSpecialEventsTableFiles(){
-        fileTypeColumn.setCellFactory(column -> new TableCell<File, FontIcon>() {
+        fileTypeColumn.setCellFactory(column -> new TableCell<FileDevice, FontIcon>() {
             @Override
             protected void updateItem(FontIcon item, boolean empty) {
                 super.updateItem(item, empty);
@@ -115,7 +119,7 @@ public class FilesPageControllers {
                 int row = pos.getRow();
                 int column = pos.getColumn();
 
-                File selectedItem = tblFiles.getItems().get(row);
+                FileDevice selectedItem = tblFiles.getItems().get(row);
                 String selectedColumnName = tblFiles.getColumns().get(column).getText();
 
                 handleCellDoubleClick(selectedItem, selectedColumnName);
@@ -123,7 +127,7 @@ public class FilesPageControllers {
         });
     }
     private void defineStructureData(){
-        sizeColumn.setCellFactory(column -> new TableCell<File, String>() {
+        sizeColumn.setCellFactory(column -> new TableCell<FileDevice, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -153,8 +157,8 @@ public class FilesPageControllers {
         Task<List<Contact>> task = new Task<>() {
             @Override
             protected List<Contact> call() throws Exception {
-                fileObservableList = FXCollections.observableArrayList(files);
-                tblFiles.setItems( fileObservableList );
+                fileDeviceObservableList = FXCollections.observableArrayList(fileDevices);
+                tblFiles.setItems(fileDeviceObservableList);
                 return null;
             }
         };
@@ -170,23 +174,26 @@ public class FilesPageControllers {
         thread.start();
 
     }
-    private void handleCellDoubleClick(File item, String columnName) {
+    private void handleCellDoubleClick(FileDevice item, String columnName) {
         if (item.getFileType() == FilesType.FOLDER) {
             String newPath = item.getPath() + item.getName() + "/";
-            List<File> newFiles = filesController.getFilesFrom(newPath);
+            List<FileDevice> newFileDevices = filesController.getFilesFrom(newPath);
 
-            if (!newFiles.isEmpty()) {
+            if (!newFileDevices.isEmpty()) {
 
                 Button history = new Button(item.getName());
-                Label next = new Label(">");
+                Label next = new Label("/");
 
                 idButtonHistory ++;
+
+                next.getStyleClass().add("important-text");
+
                 history.setId(idButtonHistory + "," + newPath);
-                history.getStyleClass().add("no-button");
+                history.getStyleClass().add("link-button");
                 history.setOnAction(event -> noButtonReturn(history.getId()));
 
                 pnlHistory.getChildren().addAll(next, history);
-                files = newFiles;
+                fileDevices = newFileDevices;
                 tblFiles.getItems().clear();
                 fillData();
 
@@ -207,7 +214,7 @@ public class FilesPageControllers {
         System.out.println("Droping Butons from: " + idFromDrop + " to " + pnlHistory.getChildren().size());
         pnlHistory.getChildren().remove(id + idFromDrop, pnlHistory.getChildren().size());
 
-        files = filesController.getFilesFrom(newPath);
+        fileDevices = filesController.getFilesFrom(newPath);
         tblFiles.getItems().clear();
         fillData();
     }
@@ -215,11 +222,17 @@ public class FilesPageControllers {
 
     }
     public void onButtonExport() {
-        File file = tblFiles.getSelectionModel().getSelectedItem();
-        if (file.getFileType() == FilesType.FOLDER) {
+        FileDevice fileDevice = tblFiles.getSelectionModel().getSelectedItem();
+        File file = (new DirectoryChooser()).showDialog(new Stage());
 
-        } else {
-
+        if (file != null) {
+            if (filesController.pull(fileDevice, file.getAbsolutePath())) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Extraccion de aplicacion");
+                alert.setHeaderText(null);
+                alert.setContentText("El archivo " + fileDevice.getName() + " se descargo correctamente");
+                alert.showAndWait();
+            }
         }
     }
     public void onButtonNewFolder() {

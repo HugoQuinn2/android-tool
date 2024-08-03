@@ -10,35 +10,35 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="618.0" prefWidth="903.0" stylesheets="@../../style/GreenDarkTheme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.FilesPageControllers">
+<AnchorPane prefHeight="618.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.FilesPageControllers">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="810.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="810.0" spacing="10.0" styleClass="body" stylesheets="@../../style/stlFilesPage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TextField maxWidth="500.0" prefHeight="31.0" prefWidth="400.0" />
-            <HBox fx:id="pnlHistory" alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="823.0" styleClass="pnl-history">
+            <HBox fx:id="pnlHistory" alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="823.0" spacing="10.0" styleClass="pnl-history">
                <children>
-                  <Button fx:id="btnRootFiles" mnemonicParsing="false" prefHeight="39.0" prefWidth="67.0" styleClass="no-button" text="root">
+                  <Button fx:id="btnRootFiles" mnemonicParsing="false" prefHeight="39.0" prefWidth="61.0" styleClass="link-button" text="root">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="863.0" spacing="5.0" styleClass="pnl-opc">
+            <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="863.0" spacing="5.0" styleClass="menu-panel">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onButtonSend" prefHeight="28.0" prefWidth="11.0" styleClass="no-button">
+                  <Button mnemonicParsing="false" onAction="#onButtonSend" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-download" />
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#onButtonExport" prefHeight="28.0" prefWidth="1.0" styleClass="no-button">
+                  <Button mnemonicParsing="false" onAction="#onButtonExport" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-upload" />
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#onButtonNewFolder" prefHeight="28.0" prefWidth="24.0" styleClass="no-button">
+                  <Button mnemonicParsing="false" onAction="#onButtonNewFolder" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-folder-plus" />
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#onButtonDrop" prefHeight="28.0" prefWidth="7.0" styleClass="no-button">
+                  <Button mnemonicParsing="false" onAction="#onButtonDrop" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-trash" />
                      </graphic></Button>
@@ -46,15 +46,18 @@
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </HBox>
-            <TableView fx:id="tblFiles" prefHeight="200.0" prefWidth="200.0" styleClass="table-low-profile" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tblFiles" prefHeight="200.0" prefWidth="200.0" styleClass="simple-table" VBox.vgrow="ALWAYS">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
          </children>
          <padding>
-            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            <Insets bottom="40.0" left="40.0" right="40.0" top="20.0" />
          </padding>
       </VBox>
    </children>

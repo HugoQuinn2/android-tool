@@ -1,0 +1,166 @@
+/* Background */
+.body {
+    -fx-background-color: #E8F1F2;
+}
+
+FontIcon {
+    -fx-icon-color: #242B25; /* Color de iconos */
+}
+
+/* Menu Bar */
+
+.pnl-devices FontIcon{
+    -fx-icon-color: #D6D6D6;
+}
+
+.body-menu-bar {
+    -fx-background-color: #30362F;
+}
+
+.menu_opc .label,  .menu_opc FontIcon, .legal{
+    -fx-text-fill: #E8F1F2;
+    -fx-icon-color: #E8F1F2;
+}
+
+.menu_opc:disabled FontIcon{
+    -fx-icon-color: gray;
+}
+
+.menu_opc:hover, .menu_opc:hover .label, .menu_opc:hover FontIcon {
+    -fx-background-color: #7A9E7E;
+    -fx-text-fill: #252622;
+    -fx-icon-color: #252622;
+}
+
+/* Tables */
+.simple-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.simple-table FontIcon {
+    -fx-icon-color: #242B25;
+}
+
+.simple-table .column-header {
+    -fx-background-color: #E8F1F2;
+    -fx-border-color: #D4D6D0;
+}
+
+.simple-table .column-header .label {
+    -fx-text-fill: #242B25;
+}
+
+.simple-table .table-cell {
+    -fx-text-fill: #414D42;
+    -fx-border-color: transparent;
+}
+
+.simple-table .table-row-cell:filled:selected, .simple-table .table-row-cell:hover {
+    -fx-background-color: #C6E1C5;
+}
+
+.simple-table .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: #D4D6D0;
+}
+
+/* Special Panels */
+.menu-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #D4D6D0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0, 5);
+}
+
+.menu-panel .button:hover {
+    -fx-background-color: #EDEDED;
+}
+
+.pnl-cbox {
+    -fx-background-color: #7A9E7E;
+    -fx-border-color: transparent;
+}
+
+.pnl-cbox ComboBox {
+    -fx-background-color: #7A9E7E;
+    -fx-border-color: transparent;
+}
+
+.pnl-cbox ComboBox .label {
+    -fx-text-fill: #242B25;
+}
+
+.separator-top-bottom {
+    -fx-border-color: #D4D6D0;
+}
+
+.pnl-app {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0), 10, 0, 0, 0);
+}
+
+.pnl-app:hover {
+    -fx-background-color: #E2E2E2;
+}
+
+.pnl-app-image {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E8E8E8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0, 5);
+}
+
+.pnl-app-image FontIcon{
+    -fx-icon-color: #242B25;
+}
+
+.card-selected {
+    -fx-background-color: #E2E2E2;
+}
+
+.pnl-services {
+    -fx-background-color: #D9D9D9;
+}
+
+/* Buttons */
+.button, .button:hover, .button:pressed {
+    -fx-background-color: transparent;
+}
+
+.link-button {
+    -fx-text-fill: #242B25;
+}
+
+.link-button:hover {
+    -fx-background-color: #DEDEDE;
+    -fx-text-fill: #242B25;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #242B25;
+    -fx-background-insets: 2;
+}
+
+/* Labels */
+.important-text {
+    -fx-text-fill: #242B25;
+}
+
+.body-text {
+    -fx-text-fill: #414D42;
+}
+
+/* Iconos */
+FontIcon {
+    -fx-icon-color: #242B25;
+}
+
+/* Text Field */
+.text-field {
+    -fx-background-color: #DEDEDE;
+    -fx-border-color: #D6D6D6;
+    -fx-text-fill: #242B25;
+}
