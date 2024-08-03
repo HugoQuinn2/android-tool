@@ -6,12 +6,10 @@ import lombok.EqualsAndHashCode;
 import org.hq.androidtool.config.FilesType;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import java.util.Date;
-
 @Data
 @Builder
 @EqualsAndHashCode
-public class File {
+public class FileDevice {
     private String name;
     private String user;
     private String size;

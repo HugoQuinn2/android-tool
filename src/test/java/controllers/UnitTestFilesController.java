@@ -4,7 +4,7 @@ import org.hq.androidtool.controllers.CommandController;
 import org.hq.androidtool.controllers.DeviceController;
 import org.hq.androidtool.controllers.FilesController;
 import org.hq.androidtool.models.Device;
-import org.hq.androidtool.models.File;
+import org.hq.androidtool.models.FileDevice;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -24,9 +24,9 @@ public class UnitTestFilesController {
         DeviceController deviceController = new DeviceController();
         List<Device> devices = deviceController.getDevices();
         FilesController filesController = new FilesController(devices.get(0));
-        List<File> files = filesController.getFilesFrom("/");
+        List<FileDevice> fileDevices = filesController.getFilesFrom("/");
 
 
-        System.out.println( files );
+        System.out.println(fileDevices);
     }
 }
