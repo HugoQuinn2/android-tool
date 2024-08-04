@@ -20,12 +20,12 @@
 }
 
 .pnl-cbox {
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
 }
 
 ComboBox {
-    -fx-font-size: 12px;
+    -fx-font-size: 11px;
 }
 
 .separator-top-bottom {

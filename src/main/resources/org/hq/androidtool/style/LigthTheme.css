@@ -82,12 +82,13 @@ FontIcon {
 }
 
 .pnl-cbox ComboBox {
-    -fx-background-color: #7A9E7E;
+    -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
 
-.pnl-cbox ComboBox .label {
+.pnl-cbox ComboBox .label, .pnl-cbox FontIcon {
     -fx-text-fill: #242B25;
+    -fx-icon-color: #242B25;
 }
 
 .separator-top-bottom {
