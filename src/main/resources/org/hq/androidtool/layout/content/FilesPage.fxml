@@ -17,7 +17,7 @@
             <TextField fx:id="txtFilter" maxWidth="500.0" prefHeight="31.0" prefWidth="400.0" />
             <HBox fx:id="pnlHistory" alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="823.0" spacing="10.0" styleClass="pnl-history">
                <children>
-                  <Button fx:id="btnRootFiles" mnemonicParsing="false" prefHeight="39.0" prefWidth="61.0" styleClass="link-button" text="root">
+                  <Button fx:id="btnRootFiles" mnemonicParsing="false" prefHeight="11.0" prefWidth="61.0" styleClass="link-button" text="root">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -26,11 +26,11 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="863.0" spacing="5.0" styleClass="menu-panel">
                <children>
-                  <Button fx:id="btnPush" mnemonicParsing="false" onAction="#onButtonSend" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
+                  <Button fx:id="btnPush" mnemonicParsing="false" onAction="#onButtonExport" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-download" />
                      </graphic></Button>
-                  <Button fx:id="btnPull" mnemonicParsing="false" onAction="#onButtonExport" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
+                  <Button fx:id="btnPull" mnemonicParsing="false" onAction="#onButtonSend" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-upload" />
                      </graphic></Button>

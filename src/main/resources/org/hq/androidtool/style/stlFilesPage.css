@@ -37,8 +37,8 @@
 }
 
 .menu-panel .button {
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
 }
 
 .menu-panel FontIcon{
@@ -47,5 +47,15 @@
 /* Search History */
 .pnl-history .button{
     -fx-font-size: 18px;
+}
+
+.pnl-history .label{
+    -fx-font-size: 18px;
+}
+
+/* History menu */
+.link-button {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
 }
 

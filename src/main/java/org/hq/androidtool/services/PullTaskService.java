@@ -94,7 +94,7 @@ public class PullTaskService extends Task<Void> {
                         String file = masterPath + "/" + fileDevice.getName();
                         String message = String.format("Exportando %s\n%s/%s", fileDevice.getName(), i, filesFolders.size());
 
-                        System.out.println(message);
+//                        System.out.println(message);
 
                         if (adbCommandFiles.pull(device, file, newTo)) {
                             updateProgress(i, filesFolders.size());
