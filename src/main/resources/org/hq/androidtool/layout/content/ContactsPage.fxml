@@ -16,7 +16,7 @@
    <children>
       <VBox prefHeight="590.0" prefWidth="241.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="txtFilterContacts" maxWidth="400.0" prefHeight="29.0" prefWidth="342.0" />
+            <TextField fx:id="txtFilterContacts" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0" styleClass="search-field" />
             <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="577.0" spacing="10.0" styleClass="menu-panel">
                <children>
                   <Button fx:id="btnDropContact" mnemonicParsing="false" onMouseClicked="#onBtnDropContact" styleClass="button-red">

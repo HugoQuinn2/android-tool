@@ -160,8 +160,8 @@ FontIcon {
 }
 
 /* Text Field */
-.text-field {
-    -fx-background-color: #DEDEDE;
+.search-field {
+    -fx-background-color: white;
     -fx-border-color: #D6D6D6;
     -fx-text-fill: #242B25;
 }

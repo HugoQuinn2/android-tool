@@ -7,31 +7,35 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.hq.androidtool.config.GuiConfig;
 
+import java.util.Objects;
+
 public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        String style = getClass().getResource(GuiConfig.lightTheme).toExternalForm();
-
-        String app_icon_path = String.valueOf(getClass().getResource("/org/hq/androidtool/layout/icon/AppIcon.png"));
         FXMLLoader gui_main = new FXMLLoader(MainApp.class.getResource("/org/hq/androidtool/layout/MainPage.fxml"));
-        Scene scene = new Scene(gui_main.load(), 1100, 750);
+        Scene scene = new Scene(gui_main.load(), GuiConfig.prefWidth, GuiConfig.prefHeight);
 
-        scene.getStylesheets().add(style);
-
-        primaryStage.getIcons().add(new Image( app_icon_path ));
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Android Tool");
-
-        primaryStage.setMaximized(GuiConfig.maximized);
-
-        primaryStage.setMinWidth(GuiConfig.minWidth);
-        primaryStage.setMinHeight(GuiConfig.minHeight);
+        loadConfigGui(primaryStage,scene);
 
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void loadConfigGui(Stage primaryStage, Scene scene){
+        String style = Objects.requireNonNull(getClass().getResource(GuiConfig.lightTheme)).toExternalForm();
+        String appIcon = String.valueOf(getClass().getResource(GuiConfig.appIcon));
+
+        primaryStage.setTitle(GuiConfig.nameApp);
+        primaryStage.setMaximized(GuiConfig.maximized);
+        primaryStage.setMinWidth(GuiConfig.minWidth);
+        primaryStage.setMinHeight(GuiConfig.minHeight);
+        primaryStage.getIcons().add(new Image(appIcon));
+
+        scene.getStylesheets().add(style);
     }
 }

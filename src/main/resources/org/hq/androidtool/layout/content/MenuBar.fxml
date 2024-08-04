@@ -51,7 +51,7 @@
             <Insets />
          </VBox.margin>
       </VBox>
-      <VBox minHeight="100.0" prefHeight="883.0" prefWidth="160.0" spacing="5.0" VBox.vgrow="ALWAYS">
+      <VBox spacing="5.0" VBox.vgrow="ALWAYS">
          <children>
             <HBox fx:id="pnlMenuPage" alignment="CENTER_LEFT" layoutX="10.0" layoutY="96.0" onMouseClicked="#onMenuButton" prefHeight="34.0" prefWidth="298.0" spacing="10.0" styleClass="menu_opc">
                <children>
