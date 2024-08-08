@@ -67,20 +67,12 @@ public class MenuBarController {
         chbxDevices.getItems().clear();
 
         for ( Device device : deviceList ) {
-            if ( !isDeviceAvailable(device) ) {
-                refactorMenu( true );
-            } else {
+            if ( isDeviceAvailable(device) ) {
                 chbxDevices.getItems().add(device.getDeviceName());
             }
         }
 
-        if (!deviceList.isEmpty()) {
-            chbxDevices.setValue( deviceList.getFirst().getDeviceName() );
-            refactorMenu( false);
-        } else {
-            chbxDevices.setValue( "No Devices" );
-            refactorMenu( true );
-        }
+        refactorMenu(chbxDevices.getItems().isEmpty());
     }
     private void  refactorMenu(Boolean state){
         pnlMenuPage.setDisable(state);

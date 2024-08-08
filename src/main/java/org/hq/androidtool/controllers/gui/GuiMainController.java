@@ -15,16 +15,27 @@ public class GuiMainController {
     private ScrollPane pnlContentPane;
 
     public void initialize() {
+        FXMLLoader defaulPage;
+        Pane dPage = new Pane();
+
         try {
+
             FXMLLoader menu_bar = new FXMLLoader(getClass().getResource("/org/hq/androidtool/layout/content/MenuBar.fxml"));
+            defaulPage = new FXMLLoader(getClass().getResource("/org/hq/androidtool/layout/content/DefaultPage.fxml"));
+            dPage = defaulPage.load();
+
             menu_bar.setControllerFactory(param -> new MenuBarController(this));
+
             bp_main.setLeft(menu_bar.load());
+
         } catch (IOException e) {
             System.err.println("No se pudo cargar el menu: " + e.getMessage());
-        }
+        } finally {
+            pnlContentPane.setFitToWidth(true);
+            pnlContentPane.setFitToHeight(true);
 
-        pnlContentPane.setFitToWidth(true);
-        pnlContentPane.setFitToHeight(true);
+//            pnlContentPane.setContent(dPage);
+        }
     }
 
     public <T> void loadContent(String fxmlPath, T object) {

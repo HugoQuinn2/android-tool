@@ -68,13 +68,13 @@
                      <children>
                         <HBox prefHeight="0.0" prefWidth="390.0">
                            <children>
-                              <Label text="100 % en uso">
+                              <Label fx:id="lblStorageProgress" text="100 % en uso">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="29.0" prefWidth="85.0" HBox.hgrow="ALWAYS" />
-                              <Label layoutX="10.0" layoutY="10.0" text="250 / 250 GB">
+                              <Label fx:id="lblStorage" layoutX="10.0" layoutY="10.0" text="250 / 250 GB">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -83,7 +83,7 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <ProgressBar prefHeight="18.0" prefWidth="440.0" progress="0.0" />
+                  <ProgressBar fx:id="pgbStorage" prefHeight="18.0" prefWidth="440.0" progress="0.0" />
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -140,7 +140,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="29.0" prefWidth="122.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="lblAndroidId1" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
+                        <TextField fx:id="lblAndroidId" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
                      </children>
                   </HBox>
                   <HBox layoutX="30.0" layoutY="166.0" prefHeight="0.0" prefWidth="390.0">
@@ -151,7 +151,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="27.0" prefWidth="125.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="lblDisplay1" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
+                        <TextField fx:id="lblDisplay" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
                      </children>
                   </HBox>
                   <HBox layoutX="30.0" layoutY="205.0" prefHeight="0.0" prefWidth="390.0">
@@ -162,7 +162,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="29.0" prefWidth="107.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="lblProcessor1" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
+                        <TextField fx:id="lblProcessor" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
                      </children>
                   </HBox>
                   <HBox layoutX="30.0" layoutY="244.0" prefHeight="0.0" prefWidth="390.0">
@@ -173,7 +173,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="100.0" prefWidth="174.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="lblRam1" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
+                        <TextField fx:id="lblRam" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
                      </children>
                   </HBox>
                   <HBox layoutX="30.0" layoutY="283.0" prefHeight="0.0" prefWidth="390.0">
@@ -184,7 +184,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="100.0" prefWidth="174.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="lblSerial1" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
+                        <TextField fx:id="lblSerial" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="152.0" styleClass="lbl_info" text="&lt;ip&gt;" />
                      </children>
                   </HBox>
                </children>

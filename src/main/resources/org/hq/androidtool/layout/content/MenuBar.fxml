@@ -91,7 +91,7 @@
             </HBox>
             <HBox fx:id="pnlFilesPage" alignment="CENTER_LEFT" onMouseClicked="#onFilesPageButton" prefHeight="33.0" prefWidth="298.0" spacing="10.0" styleClass="menu_opc">
                <children>
-                  <FontIcon iconLiteral="bi-folder2" styleClass="icon_menu_bar" />
+                  <FontIcon iconLiteral="bi-folder" styleClass="icon_menu_bar" />
                   <Label prefHeight="17.0" prefWidth="210.0" text="Archivos">
                      <font>
                         <Font size="16.0" />

@@ -83,8 +83,8 @@ public class AdbParsers {
 
         for (String line : lines) {
             String[] columns = line.trim().split("\\s+");
-            if (columns.length >= 6 && columns[0].startsWith("/dev/block/")) {
-                totalUsed += Long.parseLong(columns[2]);
+            if (columns[0].startsWith("/dev/block/")) {
+                totalUsed += Long.parseLong(columns[2]) + Long.parseLong(columns[3]);
                 totalAvailable += Long.parseLong(columns[3]);
             }
         }
