@@ -1,6 +1,6 @@
 /* Background */
 .body {
-    -fx-background-color: #E8F1F2;
+    -fx-background-color: #E5E6E5;
 }
 
 .body FontIcon, FontIcon {
@@ -43,7 +43,7 @@
 }
 
 .simple-table .column-header {
-    -fx-background-color: #E8F1F2;
+    -fx-background-color: #E5E6E5;
     -fx-border-color: #D4D6D0;
 }
 

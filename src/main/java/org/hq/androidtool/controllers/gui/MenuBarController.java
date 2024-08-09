@@ -73,6 +73,10 @@ public class MenuBarController {
         }
 
         refactorMenu(chbxDevices.getItems().isEmpty());
+
+        if (!chbxDevices.getItems().isEmpty()) {
+            chbxDevices.setValue(chbxDevices.getItems().get(0));
+        }
     }
     private void  refactorMenu(Boolean state){
         pnlMenuPage.setDisable(state);
