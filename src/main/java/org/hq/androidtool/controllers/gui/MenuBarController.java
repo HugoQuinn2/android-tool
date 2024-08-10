@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.hq.androidtool.config.DevicesState;
+import org.hq.androidtool.config.GuiConfig;
 import org.hq.androidtool.controllers.DeviceController;
 import org.hq.androidtool.models.Device;
 
@@ -31,7 +32,6 @@ public class MenuBarController {
 
     public MenuBarController(GuiMainController mainController) {
         this.guiMainController = mainController;
-
     }
     @FXML
     public void initialize(){
@@ -41,27 +41,24 @@ public class MenuBarController {
 
     public void onMenuButton(MouseEvent event){
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent("/org/hq/androidtool/layout/content/MenuPage.fxml", getDeviceByName(deviceName));
+        guiMainController.loadContent(GuiConfig.MENU_PAGE_PATH, getDeviceByName(deviceName));
     }
-
     public void onContactsPage(MouseEvent event){
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent("/org/hq/androidtool/layout/content/ContactsPage.fxml", getDeviceByName(deviceName));
+        guiMainController.loadContent(GuiConfig.CONTACTS_PAGE_PATH, getDeviceByName(deviceName));
     }
-
     public void onAppsPageButton(MouseEvent event){
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent("/org/hq/androidtool/layout/content/AppsPage.fxml", getDeviceByName(deviceName));
+        guiMainController.loadContent(GuiConfig.APPS_PAGE_PATH, getDeviceByName(deviceName));
     }
     public void onFilesPageButton(MouseEvent event) {
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent("/org/hq/androidtool/layout/content/FilesPage.fxml", getDeviceByName(deviceName));
+        guiMainController.loadContent(GuiConfig.FILES_PAGE_PATH, getDeviceByName(deviceName));
     }
+
     public void onReloadButton(MouseEvent event){
         reloadDevices();
     }
-
-
     private void reloadDevices(){
         this.deviceList = this.deviceController.getDevices();
         chbxDevices.getItems().clear();

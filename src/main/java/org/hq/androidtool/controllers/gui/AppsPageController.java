@@ -16,7 +16,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.hq.androidtool.controllers.AppsController;
 import org.hq.androidtool.models.Application;
@@ -203,7 +202,7 @@ public class AppsPageController {
     }
 
     private Pane makeAppCard(Application application){
-        String fxmlPath = "/org/hq/androidtool/layout/content/AppCard.fxml";
+        String fxmlPath = "/layout/content/AppCard.fxml";
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
