@@ -17,9 +17,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.hq.androidtool.config.GuiConfig;
 import org.hq.androidtool.controllers.AppsController;
 import org.hq.androidtool.models.Application;
 import org.hq.androidtool.models.Device;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +48,9 @@ public class AppsPageController {
     private Map<Pane, Object> paneControllerMap;
     private AppCardController cardChose;
     private DropShadow shadow;
+
+    private static final Logger logger = LoggerFactory.getLogger(AppsPageController.class);
+
 
     public AppsPageController(Device device){
         this.device = device;
@@ -143,6 +149,7 @@ public class AppsPageController {
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
+                logger.info(  device.getDeviceName() + " | " + "Cargando Aplicaciones de dispositivo.");
                 for (Application application : applications) {
                     Pane pane = makeAppCard(application);
                     if (pane != null) {
@@ -156,7 +163,7 @@ public class AppsPageController {
 
         task.setOnFailed(e -> {
             Platform.runLater(() -> {
-                System.err.println("No se pudo cargar los datos del dispositivo");
+                logger.error(  device.getDeviceName() + " | " + "No se pudo cargar las aplicacion de dispositivo: " + e);
             });
         });
 
@@ -202,13 +209,12 @@ public class AppsPageController {
     }
 
     private Pane makeAppCard(Application application){
-        String fxmlPath = "/layout/content/AppCard.fxml";
+        File fxmlPath = new File(GuiConfig.APP_CARD_PATH);
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(fxmlPath.toURI().toURL());
             loader.setControllerFactory(param -> new AppCardController(application));
             Pane pane = loader.load();
-            pane.setEffect(this.shadow);
             AppCardController controller = loader.getController();
             paneControllerMap.put(pane, controller);
 

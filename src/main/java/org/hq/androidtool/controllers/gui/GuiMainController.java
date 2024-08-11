@@ -2,7 +2,6 @@ package org.hq.androidtool.controllers.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -11,8 +10,9 @@ import org.hq.androidtool.utils.FxmlValidator;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GuiMainController {
     @FXML
@@ -20,9 +20,7 @@ public class GuiMainController {
     @FXML
     private ScrollPane pnlContentPane;
 
-    private static final List<String> UNSAFE_TAGS = List.of("Script", "HttpRequest", "JavaScript");
-    private static final List<String> UNSAFE_ATTRIBUTES = List.of("onload", "onclick");
-    private static FxmlValidator fxmlValidator;
+    private static final Logger logger = LoggerFactory.getLogger(GuiMainController.class);
 
     public void initialize() {
         try {
@@ -32,7 +30,7 @@ public class GuiMainController {
             menu_bar.setControllerFactory(param -> new MenuBarController(this));
             bp_main.setLeft(menu_bar.load());
         } catch (IOException e) {
-            System.err.println("No se pudo cargar el menu: " + e.getMessage());
+            logger.error("No se pudo cargar el menu: " + e.getMessage());
         } finally {
             pnlContentPane.setFitToWidth(true);
             pnlContentPane.setFitToHeight(true);
@@ -41,6 +39,7 @@ public class GuiMainController {
 
     public <T> void loadContent(String fxmlPath, T object) {
         try {
+            logger.info( "Cargando pagina: " + fxmlPath);
             File fxmlFile = new File(fxmlPath);
             if (FxmlValidator.isFxmlSafe(fxmlFile.toURI().toURL())) {
                 FXMLLoader loader = new FXMLLoader(fxmlFile.toURI().toURL());
@@ -48,6 +47,7 @@ public class GuiMainController {
                     try {
                         return param.getDeclaredConstructor(object.getClass()).newInstance(object);
                     } catch (Exception e) {
+                        logger.error("Erroe en carga de objeto: " + e.getMessage());
                         throw new RuntimeException(e);
                     }
                 });
@@ -55,7 +55,7 @@ public class GuiMainController {
                 pnlContentPane.setContent(content);
             }
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            logger.error("No se pudo cargar la pagina: " + e.getMessage());
         }
     }
 }

@@ -3,6 +3,8 @@ package org.hq.androidtool.controllers;
 
 import org.hq.androidtool.models.Contact;
 import org.hq.androidtool.models.Device;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,12 +14,15 @@ import java.util.List;
 
 public class ContactsControllers {
     private CommandController commandController;
+    private static final Logger logger = LoggerFactory.getLogger(ContactsControllers.class);
 
     public ContactsControllers(){
         this.commandController = new CommandController();
     }
 
     public List<Contact> getContacts(Device device){
+        logger.info("Descargando contactos de " + device.getDeviceName());
+
         List<String> listContacts = commandController.getContacts(device);
         List<Contact> Contacts = new ArrayList<>();
 
@@ -46,6 +51,8 @@ public class ContactsControllers {
     }
 
     public boolean exportToCSV(List<Contact> contacts, String csvPath) {
+        logger.info("Descargando " + contacts.size() + " contactos a " + csvPath);
+
         File file = new File(csvPath);
 
         try (PrintWriter writer = new PrintWriter(new PrintWriter(file))) {
@@ -58,7 +65,7 @@ public class ContactsControllers {
             return true;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error en exportacion: " + e.getMessage());
             return false;
         }
     }

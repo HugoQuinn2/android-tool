@@ -1,5 +1,8 @@
 package org.hq.androidtool.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.net.URL;
 import java.util.List;
@@ -7,6 +10,7 @@ import java.util.List;
 public class FxmlValidator {
     private static final List<String> UNSAFE_TAGS = List.of("Script", "HttpRequest", "JavaScript");
     private static final List<String> UNSAFE_ATTRIBUTES = List.of("onload", "onclick");
+    private static final Logger logger = LoggerFactory.getLogger(FxmlValidator.class);
 
     public static boolean isFxmlSafe(URL fxmlUrl) {
         return validateFxmlContent(fxmlUrl);
@@ -19,7 +23,7 @@ public class FxmlValidator {
 
             return !containsUnsafeTags(content) && !containsUnsafeAttributes(content);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            logger.error("Error fxml loader secure: " + e.getCause() + e.getMessage());
             return false;
         }
     }

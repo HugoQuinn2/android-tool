@@ -23,6 +23,8 @@ import org.hq.androidtool.models.FileDevice;
 
 import org.hq.androidtool.services.PullTaskService;
 import org.kordamp.ikonli.javafx.FontIcon;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.io.File;
@@ -43,6 +45,7 @@ public class FilesPageControllers {
     private List<FileDevice> fileDevices;
     private ObservableList<FileDevice> fileDeviceObservableList;
     private int idButtonHistory = 0;
+    private static final Logger logger = LoggerFactory.getLogger(FilesPageControllers.class);
 
     private TableColumn<FileDevice, String> nameColumn;
     private TableColumn<FileDevice, String> userColumn;
@@ -190,7 +193,7 @@ public class FilesPageControllers {
 
         task.setOnFailed(e -> {
             Platform.runLater(() -> {
-                System.err.println("No se pudo cargar los datos del dispositivo");
+                logger.error("No se pudo cargar los contactos: " + e);
             });
         });
 

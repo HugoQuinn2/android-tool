@@ -11,6 +11,7 @@ public class GuiConfig {
     public static final String MENU_BAR_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "MenuBar.fxml";
     public static final String MENU_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "MenuPage.fxml";
     public static final String MAIN_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "MainPage.fxml";
+    public static final String APP_CARD_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "AppCard.fxml";
 
 
     public static final String lightTheme = "/org/hq/androidtool/style/LigthTheme.css";

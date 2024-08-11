@@ -1,11 +1,14 @@
 package org.hq.androidtool.controllers;
 
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import org.hq.androidtool.config.AdbCommands;
 import org.hq.androidtool.models.Device;
 import org.hq.androidtool.services.AdbService;
 import org.hq.androidtool.utils.AdbCommandBuilder;
 import org.hq.androidtool.utils.AdbParsers;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.plaf.PanelUI;
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ public class CommandController {
     private final AdbCommandBuilder adbCommandBuilder;
     private final AdbService adbService;
     private final AdbParsers adbParsers;
+    private static final Logger logger = LoggerFactory.getLogger(CommandController.class);
 
     public CommandController() {
         this.adbCommandBuilder = new AdbCommandBuilder();
@@ -151,6 +155,18 @@ public class CommandController {
     public List<String> ls(Device device, String path) {
         List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_LS.getCommand(device.getDeviceName(), path));
         String output = adbService.executeCommand(command);
+        if (output.isEmpty()) {
+            logger.info( device.getDeviceName() + " | Permisos denegados para " + path);
+            showError("Archivos", "Permisos denegados para " + path);
+        }
         return adbParsers.parseOutputFiles(output);
+    }
+
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

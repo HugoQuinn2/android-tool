@@ -17,8 +17,4 @@ public class AdbCommandFiles {
         String output = commandController.pull(device, from, to);
         return output.contains("1 file pulled");
     }
-
-//    private Task getPullTask() {
-//
-//    }
 }

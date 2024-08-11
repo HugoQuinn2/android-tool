@@ -2,6 +2,8 @@ package org.hq.androidtool.controllers;
 
 import org.hq.androidtool.models.Application;
 import org.hq.androidtool.models.Device;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 public class AppsController {
     private CommandController commandController = new CommandController();
     private Device device;
+    private static final Logger logger = LoggerFactory.getLogger(AppsController.class);
 
     public AppsController(Device device){
         commandController = new CommandController();
@@ -41,7 +44,9 @@ public class AppsController {
     public String getBasePathApp(String pack) {
         return commandController.getPathApp(device, pack);
     }
+
     public boolean pull(String from, String to){
+        logger.info( device.getDeviceName() + " | " + "Exportando " + from);
         String output = commandController.pull(device, from, to);
         return output.contains("1 file pulled");
     }

@@ -6,14 +6,18 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.hq.androidtool.config.GuiConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Objects;
 
 public class MainApp extends Application {
+    private static final Logger logger = LoggerFactory.getLogger(MainApp.class);
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        logger.info("Ejecutando Aplicacion");
 
         File GuiMainFile = new File(GuiConfig.MAIN_PAGE_PATH);
         FXMLLoader guiMain = new FXMLLoader(GuiMainFile.toURI().toURL());

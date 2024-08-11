@@ -1,5 +1,8 @@
 package org.hq.androidtool.config;
 
+import java.io.File;
+
 public class AdbConfig {
-    public static final String ADB_PATH = AdbConfig.class.getResource("/org/hq/androidtool/adb/adb.exe").getPath();
+    private static final String APP_CONFIG_DIR = System.getProperty("user.dir");
+    public static final String ADB_PATH = APP_CONFIG_DIR + File.separator + "adb" + File.separator + "adb.exe";
 }
