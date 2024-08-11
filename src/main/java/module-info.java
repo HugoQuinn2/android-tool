@@ -12,6 +12,9 @@ module org.hq.androidtool {
     requires java.net.http;
     requires com.google.gson;
     requires org.controlsfx.controls;
+    requires org.slf4j;
+    requires ch.qos.logback.classic;
+    requires ch.qos.logback.core;
 
 
     opens org.hq.androidtool to javafx.fxml;
