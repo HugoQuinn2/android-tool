@@ -6,26 +6,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="618.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.FilesPageControllers">
+<AnchorPane prefHeight="618.0" prefWidth="903.0" styleClass="body" stylesheets="@../../style/stlFilesPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.FilesPageControllers">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="810.0" spacing="10.0" styleClass="body" stylesheets="@../../src/main/resources/org/hq/androidtool/style/stlFilesPage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="810.0" spacing="10.0" styleClass="body" stylesheets="@../../org/hq/androidtool/style/stlFilesPage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="txtFilter" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0" styleClass="search-field" />
-            <HBox fx:id="pnlHistory" alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="823.0" spacing="10.0" styleClass="pnl-history">
-               <children>
-                  <Button fx:id="btnRootFiles" mnemonicParsing="false" prefHeight="11.0" prefWidth="61.0" styleClass="link-button" text="root">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="863.0" spacing="5.0" styleClass="menu-panel">
                <children>
+                  <FontIcon iconLiteral="bi-search" />
+                  <TextField fx:id="txtFilter" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0" styleClass="search-field" />
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                   <Button fx:id="btnPush" mnemonicParsing="false" onAction="#onButtonExport" prefHeight="28.0" prefWidth="28.0" styleClass="no-button">
                      <graphic>
                         <FontIcon iconLiteral="bi-download" />
@@ -44,11 +38,20 @@
                      </graphic></Button>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets />
                </VBox.margin>
                <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                </padding>
+            </HBox>
+            <HBox fx:id="pnlHistory" alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="823.0" spacing="10.0" styleClass="pnl-history">
+               <children>
+                  <Button fx:id="btnRootFiles" mnemonicParsing="false" prefHeight="11.0" prefWidth="61.0" styleClass="link-button" text="root">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
             </HBox>
             <TableView fx:id="tblFiles" prefHeight="200.0" prefWidth="200.0" styleClass="simple-table" VBox.vgrow="ALWAYS">
                <columnResizePolicy>

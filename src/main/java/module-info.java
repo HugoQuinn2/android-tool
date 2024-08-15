@@ -15,6 +15,7 @@ module org.hq.androidtool {
     requires org.slf4j;
     requires ch.qos.logback.classic;
     requires ch.qos.logback.core;
+    requires org.jsoup;
 
 
     opens org.hq.androidtool to javafx.fxml;
@@ -23,4 +24,7 @@ module org.hq.androidtool {
     opens org.hq.androidtool.controllers to javafx.fxml;
     opens org.hq.androidtool.models to javafx.base;
     opens org.hq.androidtool.controllers.gui to javafx.fxml;
+    opens org.hq.androidtool.utils to javafx.fxml;
+    opens org.hq.androidtool.services to javafx.fxml;
+    opens org.hq.androidtool.config to javafx.fxml;
 }

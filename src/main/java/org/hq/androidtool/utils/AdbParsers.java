@@ -153,12 +153,16 @@ public class AdbParsers {
                 .replaceAll(" ", "")
                 .replaceAll("\n", "");
 
+//        for (String line : lines){
+//            if (!line.toLowerCase().contains("android")) {
+//                if (!line.toLowerCase().contains(parseManufacturer)) {
+//                    data.add(line.split(":")[1].trim());
+//                }
+//            }
+//        }
+
         for (String line : lines){
-            if (!line.toLowerCase().contains("android")) {
-                if (!line.toLowerCase().contains(parseManufacturer)) {
-                    data.add(line.split(":")[1].trim());
-                }
-            }
+            data.add(line.split(":")[1].trim());
         }
 
         return data;

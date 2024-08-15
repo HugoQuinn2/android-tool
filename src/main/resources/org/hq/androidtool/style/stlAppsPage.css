@@ -13,7 +13,7 @@
     -fx-icon-size: 20px;
 }
 
-.pnl-app-image {
+ImageView {
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }

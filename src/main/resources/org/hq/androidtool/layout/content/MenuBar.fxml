@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox maxWidth="180.0" minHeight="500.0" minWidth="180.0" prefHeight="864.0" prefWidth="180.0" spacing="10.0" styleClass="body-menu-bar" stylesheets="@../../src/main/resources/org/hq/androidtool/style/stlMenuBar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.MenuBarController">
+<VBox maxWidth="180.0" minHeight="500.0" minWidth="180.0" prefHeight="864.0" prefWidth="180.0" spacing="10.0" styleClass="body-menu-bar" stylesheets="@../../style/stlMenuBar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.MenuBarController">
    <children>
       <VBox prefHeight="0.0" prefWidth="180.0" spacing="5.0" styleClass="pnl-devices">
          <children>

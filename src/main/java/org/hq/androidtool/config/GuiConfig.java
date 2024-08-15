@@ -3,15 +3,15 @@ package org.hq.androidtool.config;
 import java.io.File;
 
 public class GuiConfig {
-    private static final String APP_CONFIG_DIR = System.getProperty("user.dir");
-    public static final String FILES_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "FilesPage.fxml";
-    public static final String APPS_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "AppsPage.fxml";
-    public static final String CONTACTS_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "ContactsPage.fxml";
-    public static final String DEFAULT_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "DefaultPage.fxml";
-    public static final String MENU_BAR_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "MenuBar.fxml";
-    public static final String MENU_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "MenuPage.fxml";
-    public static final String MAIN_PAGE_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "MainPage.fxml";
-    public static final String APP_CARD_PATH = APP_CONFIG_DIR + File.separator + "layout" + File.separator + "content" + File.separator + "AppCard.fxml";
+    private static final String APP_CONFIG_DIR = "/org/hq/androidtool/layout/";
+    public static final String FILES_PAGE_PATH = APP_CONFIG_DIR + "content/" + "FilesPage.fxml";
+    public static final String APPS_PAGE_PATH = APP_CONFIG_DIR + "content/" + "AppsPage.fxml";
+    public static final String CONTACTS_PAGE_PATH = APP_CONFIG_DIR + "content/" + "ContactsPage.fxml";
+    public static final String DEFAULT_PAGE_PATH = APP_CONFIG_DIR + "content/" + "DefaultPage.fxml";
+    public static final String MENU_BAR_PAGE_PATH = APP_CONFIG_DIR + "content/" + "MenuBar.fxml";
+    public static final String MENU_PAGE_PATH = APP_CONFIG_DIR + "content/" + "MenuPage.fxml";
+    public static final String MAIN_PAGE_PATH = APP_CONFIG_DIR + "MainPage.fxml";
+    public static final String APP_CARD_PATH = APP_CONFIG_DIR + "content/" + "AppCard.fxml";
 
 
     public static final String lightTheme = "/org/hq/androidtool/style/LigthTheme.css";

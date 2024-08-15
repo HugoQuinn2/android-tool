@@ -2,18 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="150.0" spacing="10.0" styleClass="pnl-app" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppCardController">
    <children>
-      <AnchorPane prefHeight="180.0" prefWidth="180.0" styleClass="pnl-app-image">
-         <children>
-            <FontIcon iconLiteral="bi-card-image" iconSize="100" layoutX="13.0" layoutY="114.0" styleClass="icon-transparent" text="" wrappingWidth="104.0" />
-         </children>
-      </AnchorPane>
+      <ImageView fx:id="imgAppImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/defaultAndroidApp.png" />
+         </image></ImageView>
       <Label fx:id="lblAppName" alignment="CENTER" prefHeight="20.0" prefWidth="160.0" styleClass="important-text" text="app-name" VBox.vgrow="ALWAYS">
          <font>
             <Font name="System Bold" size="14.0" />

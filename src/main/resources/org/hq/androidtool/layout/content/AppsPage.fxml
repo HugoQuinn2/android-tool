@@ -8,18 +8,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="559.0" prefWidth="870.0" stylesheets="@../../src/main/resources/org/hq/androidtool/style/stlAppsPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppsPageController">
+<AnchorPane prefHeight="559.0" prefWidth="870.0" styleClass="body" stylesheets="@../../style/stlAppsPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.AppsPageController">
    <children>
       <VBox layoutX="14.0" layoutY="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox spacing="20.0">
                <children>
-                  <TextField fx:id="txtFilter" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0" styleClass="search-field" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="5.0" styleClass="menu-panel">
+                  <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="770.0" spacing="5.0" styleClass="menu-panel">
                      <children>
+                        <FontIcon iconLiteral="bi-search">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </FontIcon>
+                        <TextField fx:id="txtFilter" maxWidth="500.0" prefHeight="30.0" prefWidth="500.0" styleClass="search-field" />
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="btnDownloadApp" mnemonicParsing="false" onMouseClicked="#onBtnDownloadApp">
                            <graphic>
                               <FontIcon iconLiteral="bi-download" />
@@ -28,6 +35,11 @@
                               <String fx:value="button-blue" />
                               <String fx:value="button" />
                            </styleClass>
+                        </Button>
+                        <Button fx:id="btnInstallApp" mnemonicParsing="false" onMouseClicked="#onBtnInstallApp" styleClass="button-green">
+                           <graphic>
+                              <FontIcon iconLiteral="bi-upload" text="" />
+                           </graphic>
                         </Button>
                         <Button fx:id="btnDropApp" mnemonicParsing="false" onMouseClicked="#onBtnDropApp">
                            <graphic>
@@ -38,14 +50,9 @@
                               <String fx:value="button" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="btnInstallApp" mnemonicParsing="false" onMouseClicked="#onBtnInstallApp" styleClass="button-green">
-                           <graphic>
-                              <FontIcon iconLiteral="bi-upload" text="" />
-                           </graphic>
-                        </Button>
                      </children>
                      <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
                </children>
@@ -75,5 +82,6 @@
             <Insets top="10.0" />
          </padding>
       </VBox>
+      <FontIcon />
    </children>
 </AnchorPane>

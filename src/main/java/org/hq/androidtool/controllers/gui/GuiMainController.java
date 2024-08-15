@@ -24,8 +24,7 @@ public class GuiMainController {
 
     public void initialize() {
         try {
-            File MenuBarFile = new File(GuiConfig.MENU_BAR_PAGE_PATH);
-            FXMLLoader menu_bar = new FXMLLoader(MenuBarFile.toURI().toURL());
+            FXMLLoader menu_bar = new FXMLLoader(getClass().getResource(GuiConfig.MENU_BAR_PAGE_PATH));
 
             menu_bar.setControllerFactory(param -> new MenuBarController(this));
             bp_main.setLeft(menu_bar.load());
@@ -40,22 +39,20 @@ public class GuiMainController {
     public <T> void loadContent(String fxmlPath, T object) {
         try {
             logger.info( "Cargando pagina: " + fxmlPath);
-            File fxmlFile = new File(fxmlPath);
-            if (FxmlValidator.isFxmlSafe(fxmlFile.toURI().toURL())) {
-                FXMLLoader loader = new FXMLLoader(fxmlFile.toURI().toURL());
-                loader.setControllerFactory(param -> {
-                    try {
-                        return param.getDeclaredConstructor(object.getClass()).newInstance(object);
-                    } catch (Exception e) {
-                        logger.error("Erroe en carga de objeto: " + e.getMessage());
-                        throw new RuntimeException(e);
-                    }
-                });
-                Pane content = loader.load();
-                pnlContentPane.setContent(content);
-            }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            loader.setControllerFactory(param -> {
+                try {
+                    return param.getDeclaredConstructor(object.getClass()).newInstance(object);
+                } catch (Exception e) {
+                    logger.error("Error en carga de objeto: " + e);
+                    throw new RuntimeException(e);
+                }
+            });
+            Pane content = loader.load();
+            pnlContentPane.setContent(content);
         } catch (IOException e) {
-            logger.error("No se pudo cargar la pagina: " + e.getMessage());
+            logger.error("No se pudo cargar la pagina: " + e);
         }
     }
 }

@@ -19,8 +19,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         logger.info("Ejecutando Aplicacion");
 
-        File GuiMainFile = new File(GuiConfig.MAIN_PAGE_PATH);
-        FXMLLoader guiMain = new FXMLLoader(GuiMainFile.toURI().toURL());
+        FXMLLoader guiMain = new FXMLLoader(getClass().getResource(GuiConfig.MAIN_PAGE_PATH));
 
         Scene scene = new Scene(guiMain.load(), GuiConfig.prefWidth, GuiConfig.prefHeight);
 

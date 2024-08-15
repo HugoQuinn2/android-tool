@@ -22,6 +22,7 @@ public class AppsController {
         List<Application> applications = new ArrayList<>();
         List<String> packList = commandController.getPackages(device);
 
+
         for (String pack : packList) {
             applications.add(
                     Application

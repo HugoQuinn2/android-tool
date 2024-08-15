@@ -209,10 +209,9 @@ public class AppsPageController {
     }
 
     private Pane makeAppCard(Application application){
-        File fxmlPath = new File(GuiConfig.APP_CARD_PATH);
 
         try {
-            FXMLLoader loader = new FXMLLoader(fxmlPath.toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(GuiConfig.APP_CARD_PATH));
             loader.setControllerFactory(param -> new AppCardController(application));
             Pane pane = loader.load();
             AppCardController controller = loader.getController();
