@@ -11,7 +11,7 @@
    <children>
       <ImageView fx:id="imgAppImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/defaultAndroidApp.png" />
+            <Image url="@../../../../../../../../img/defaultAndroidApp.png" />
          </image></ImageView>
       <Label fx:id="lblAppName" alignment="CENTER" prefHeight="20.0" prefWidth="160.0" styleClass="important-text" text="app-name" VBox.vgrow="ALWAYS">
          <font>

@@ -7,10 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lombok.Data;
+import org.hq.androidtool.config.GuiConfig;
 import org.hq.androidtool.models.Application;
 import org.hq.androidtool.services.PlayStoreService;
 
 import java.awt.*;
+import java.io.File;
+import java.net.MalformedURLException;
 
 @Data
 public class AppCardController {
@@ -29,12 +32,14 @@ public class AppCardController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() throws MalformedURLException {
         if (application != null) {
             lblAppName.setText(application.getName());
             lblAppPack.setText(application.getPackageName());
         }
 
+        File imgFile = new File(GuiConfig.APP_DEFAULT_IMG_PATH);
+        imgAppImage.setImage(new Image(String.valueOf(imgFile.toURI().toURL())));
 //        searchImage();
     }
 

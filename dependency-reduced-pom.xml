@@ -4,7 +4,7 @@
   <groupId>org.hq</groupId>
   <artifactId>androidtool</artifactId>
   <name>androidtool</name>
-  <version>0.1.0</version>
+  <version>${app.version}</version>
   <build>
     <plugins>
       <plugin>
@@ -14,6 +14,7 @@
           <archive>
             <manifestEntries>
               <Main-Class>${app.Main.App}</Main-Class>
+              <Implementation-Version>${app.version}</Implementation-Version>
             </manifestEntries>
           </archive>
         </configuration>
@@ -126,5 +127,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.10.0</junit.version>
     <app.Main.App>org.hq.androidtool.MainApp</app.Main.App>
+    <app.version>0.1.0</app.version>
   </properties>
 </project>
