@@ -9,11 +9,12 @@
     <junit.version>5.10.0</junit.version>
     <app.Main>org.hq.androidtool.Main</app.Main>
     <app.Main.App>org.hq.androidtool.MainApp</app.Main.App>
+    <app.version>0.1.0</app.version>
   </properties>
 
   <groupId>org.hq</groupId>
   <artifactId>androidtool</artifactId>
-  <version>0.1.0</version>
+  <version>${app.version}</version>
   <name>androidtool</name>
 
   <dependencies>
@@ -106,10 +107,11 @@
           <archive>
             <manifestEntries>
               <Main-Class>${app.Main.App}</Main-Class>
+              <Implementation-Version>${app.version}</Implementation-Version>
             </manifestEntries>
           </archive>
         </configuration>
-      </plugin> 
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

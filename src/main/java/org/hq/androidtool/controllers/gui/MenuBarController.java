@@ -10,7 +10,9 @@ import org.hq.androidtool.config.GuiConfig;
 import org.hq.androidtool.controllers.DeviceController;
 import org.hq.androidtool.models.Device;
 
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 public class MenuBarController {
     @FXML
@@ -29,6 +31,7 @@ public class MenuBarController {
     private DeviceController deviceController;
     private GuiMainController guiMainController;
     private List<Device> deviceList;
+    private String version;
 
     public MenuBarController(GuiMainController mainController) {
         this.guiMainController = mainController;
@@ -36,7 +39,10 @@ public class MenuBarController {
     @FXML
     public void initialize(){
         this.deviceController = new DeviceController();
+        version = getClass().getPackage().getImplementationVersion();
+        lbl_app_version.setText("v" + version);
         reloadDevices();
+
     }
 
     public void onMenuButton(MouseEvent event){
