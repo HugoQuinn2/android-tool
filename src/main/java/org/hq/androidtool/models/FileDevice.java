@@ -3,7 +3,7 @@ package org.hq.androidtool.models;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hq.androidtool.config.FilesType;
+import org.hq.androidtool.constants.FilesType;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 @Data

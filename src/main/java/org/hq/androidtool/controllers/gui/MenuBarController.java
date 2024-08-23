@@ -5,14 +5,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import org.hq.androidtool.config.DevicesState;
+import org.hq.androidtool.constants.DevicesState;
 import org.hq.androidtool.config.GuiConfig;
+import org.hq.androidtool.constants.PagesType;
 import org.hq.androidtool.controllers.DeviceController;
 import org.hq.androidtool.models.Device;
 
-import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
 
 public class MenuBarController {
     @FXML
@@ -47,19 +46,24 @@ public class MenuBarController {
 
     public void onMenuButton(MouseEvent event){
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent(GuiConfig.MENU_PAGE_PATH, getDeviceByName(deviceName));
+        Device device = getDeviceByName(deviceName);
+
+        guiMainController.loadContent(GuiConfig.MENU_PAGE_PATH, device, PagesType.MENU);
     }
     public void onContactsPage(MouseEvent event){
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent(GuiConfig.CONTACTS_PAGE_PATH, getDeviceByName(deviceName));
+        Device device = getDeviceByName(deviceName);
+        guiMainController.loadContent(GuiConfig.CONTACTS_PAGE_PATH, device, PagesType.CONTACTS);
     }
     public void onAppsPageButton(MouseEvent event){
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent(GuiConfig.APPS_PAGE_PATH, getDeviceByName(deviceName));
+        Device device = getDeviceByName(deviceName);
+        guiMainController.loadContent(GuiConfig.APPS_PAGE_PATH, device, PagesType.APPS);
     }
     public void onFilesPageButton(MouseEvent event) {
         String deviceName = chbxDevices.getValue();
-        guiMainController.loadContent(GuiConfig.FILES_PAGE_PATH, getDeviceByName(deviceName));
+        Device device = getDeviceByName(deviceName);
+        guiMainController.loadContent(GuiConfig.FILES_PAGE_PATH, device, PagesType.FILES);
     }
 
     public void onReloadButton(MouseEvent event){

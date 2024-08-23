@@ -1,4 +1,4 @@
-package org.hq.androidtool.config;
+package org.hq.androidtool.constants;
 
 public enum AdbCommands{
     ADB_DEVICE          ("devices"),

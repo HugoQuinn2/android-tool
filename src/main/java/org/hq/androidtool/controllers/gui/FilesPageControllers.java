@@ -15,7 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import org.hq.androidtool.config.FilesType;
+import org.hq.androidtool.constants.FilesType;
 import org.hq.androidtool.controllers.FilesController;
 import org.hq.androidtool.models.Contact;
 import org.hq.androidtool.models.Device;

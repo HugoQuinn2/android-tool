@@ -1,0 +1,38 @@
+.tab-pane .tab-header-area {
+    -fx-padding: 0;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+
+.tab-pane .tab .tab-label:selected{
+    -fx-padding: 0;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+
+.tab-pane .tab {
+    -fx-padding: 5px 10px 5px 10px;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+
+.tab-pane .tab:selected {
+    -fx-border-width: 0px;
+}
+
+.tab-pane .tab {
+    -fx-tab-min-width: 100;
+    -fx-tab-max-width: 200;
+}
+
+.tab-pane .tab FontIcon {
+    -fx-icon-size: 15px;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-padding: 0 20 0 0;
+}
+
+.tab-pane .tab .tab-close-button {
+    -fx-visible: true; /* Asegurarse de que el botón de cerrar esté siempre visible */
+}

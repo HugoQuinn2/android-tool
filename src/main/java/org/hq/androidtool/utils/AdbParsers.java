@@ -1,10 +1,8 @@
 package org.hq.androidtool.utils;
 
-import org.hq.androidtool.config.DevicesState;
-import org.hq.androidtool.config.FilesType;
+import org.hq.androidtool.constants.DevicesState;
+import org.hq.androidtool.constants.FilesType;
 
-import java.security.PublicKey;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

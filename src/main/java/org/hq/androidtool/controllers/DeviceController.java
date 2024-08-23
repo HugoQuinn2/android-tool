@@ -1,6 +1,6 @@
 package org.hq.androidtool.controllers;
 
-import org.hq.androidtool.config.DevicesState;
+import org.hq.androidtool.constants.DevicesState;
 import org.hq.androidtool.models.Device;
 import org.hq.androidtool.models.DeviceData;
 

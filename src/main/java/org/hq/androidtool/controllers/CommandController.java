@@ -1,8 +1,7 @@
 package org.hq.androidtool.controllers;
 
 import javafx.scene.control.Alert;
-import javafx.scene.layout.Pane;
-import org.hq.androidtool.config.AdbCommands;
+import org.hq.androidtool.constants.AdbCommands;
 import org.hq.androidtool.models.Device;
 import org.hq.androidtool.services.AdbService;
 import org.hq.androidtool.utils.AdbCommandBuilder;
@@ -10,7 +9,6 @@ import org.hq.androidtool.utils.AdbParsers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.plaf.PanelUI;
 import java.util.ArrayList;
 import java.util.List;
 
