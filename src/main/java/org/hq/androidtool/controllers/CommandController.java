@@ -151,13 +151,23 @@ public class CommandController {
     }
 
     public List<String> ls(Device device, String path) {
-        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_LS.getCommand(device.getDeviceName(), path));
-        String output = adbService.executeCommand(command);
-        if (output.isEmpty()) {
-            logger.info( device.getDeviceName() + " | Permisos denegados para " + path);
-            showError("Archivos", "Permisos denegados para " + path);
+        String filesOnFolder = getFilesFrom(device, path);
+
+        if (filesOnFolder.isEmpty())
+            return null;
+
+        List<String> files = List.of(filesOnFolder.split(","));
+        List<String> outputFiles = new ArrayList<>();
+
+        for (String file : files) {
+            String commandText = AdbCommands.ADB_STAT.getCommand(device.getDeviceName()) + " '%n,%s,%U,%y,%A' " +  path + file.replaceAll(" ", "");
+            List<String> command = adbCommandBuilder.buildCommand(commandText);
+            String output = adbService.executeCommand(command);
+            if (output != null && !output.isEmpty())
+                outputFiles.add(adbParsers.parseOutputStat(output));
         }
-        return adbParsers.parseOutputFiles(output);
+
+        return outputFiles;
     }
 
     private void showError(String title, String message) {
@@ -167,4 +177,10 @@ public class CommandController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public String getFilesFrom(Device device, String from) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_LS_M.getCommand(device.getDeviceName(), from));
+        return adbService.executeCommand(command).replaceAll("\n", "").replaceAll("\r", "");
+    }
+
 }

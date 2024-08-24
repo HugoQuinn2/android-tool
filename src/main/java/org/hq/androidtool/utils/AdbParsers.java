@@ -208,5 +208,11 @@ public class AdbParsers {
     public String pareOutputPathBaseApk(String output) {
         return output.split("\\n")[0].split(":")[1].trim();
     }
+
+    public String parseOutputStat(String output) {
+        String[] data = output.split(",");
+        // File, Size B, User, Last Modify, Permission -> FileType, User, Size, Date, Name
+        return  String.format("%s,%s,%s,%s, %s", getFyleType(data[4]), data[2], data[1], data[3], List.of(data[0].split("/")).getLast() );
+    }
 }
 

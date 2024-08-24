@@ -204,29 +204,26 @@ public class FilesPageControllers {
     }
     private void handleCellDoubleClick(FileDevice item, String columnName) {
         if (item.getFileType() == FilesType.FOLDER) {
-            String newPath = item.getPath() + item.getName() + "/";
+            String newPath = (item.getPath() + item.getName() + "/").replaceAll(" ", "");
             List<FileDevice> newFileDevices = filesController.getFilesFrom(newPath);
 
-            if (!newFileDevices.isEmpty()) {
+            Button history = new Button(item.getName());
+            Label next = new Label("/");
 
-                Button history = new Button(item.getName());
-                Label next = new Label("/");
+            idButtonHistory++;
 
-                idButtonHistory ++;
+            next.getStyleClass().add("important-text");
 
-                next.getStyleClass().add("important-text");
+            history.setId(idButtonHistory + "," + newPath);
+            history.getStyleClass().add("link-button");
+            history.setOnAction(event -> noButtonReturn(history.getId()));
 
-                history.setId(idButtonHistory + "," + newPath);
-                history.getStyleClass().add("link-button");
-                history.setOnAction(event -> noButtonReturn(history.getId()));
+            pnlHistory.getChildren().addAll(next, history);
+            fileDevices = newFileDevices;
+            tblFiles.getItems().clear();
+            fillData();
 
-                pnlHistory.getChildren().addAll(next, history);
-                fileDevices = newFileDevices;
-                tblFiles.getItems().clear();
-                fillData();
-
-                System.out.println("New Button Add:" + history.getId());
-            }
+            System.out.println("New Button Add:" + history.getId());
         }
     }
     private void initFilter() {

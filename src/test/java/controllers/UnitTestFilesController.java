@@ -22,11 +22,17 @@ public class UnitTestFilesController {
     @Test
     public void makeFilesModel() {
         DeviceController deviceController = new DeviceController();
+
+        // Time counter get devices
+        long startTime = System.currentTimeMillis();
         List<Device> devices = deviceController.getDevices();
+        System.out.println(String.format("Devices: %s -> %s ms", devices, System.currentTimeMillis() - startTime));
+
+        // Time counter get files from root
+        startTime = System.currentTimeMillis();
         FilesController filesController = new FilesController(devices.get(0));
         List<FileDevice> fileDevices = filesController.getFilesFrom("/");
+        System.out.println(String.format("Files (/): %s -> %s ms", fileDevices.size(), System.currentTimeMillis() - startTime));
 
-
-        System.out.println(fileDevices);
     }
 }
