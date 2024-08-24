@@ -8,6 +8,7 @@ import org.hq.androidtool.utils.AdbCommandFiles;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FilesController {
@@ -25,19 +26,19 @@ public class FilesController {
     public List<FileDevice> getFilesFrom(String path) {
         List<FileDevice> fileDevices = new ArrayList<>();
         List<String> filesFormat = commandController.ls(device, path);
-        String formato = "yyyy-MM-dd HH:mm";
-        SimpleDateFormat sdf = new SimpleDateFormat(formato);
+
 
         if (filesFormat != null) {
             for (String fileFormat : filesFormat) {
                 String[] data = fileFormat.split(",");
+
                 fileDevices.add(
                         FileDevice
                                 .builder()
                                 .fileType(getFileType(data[0]))
                                 .user(data[1])
                                 .size(data[2])
-                                .date(data[3])
+                                .date(data[3].substring(0,16))
                                 .name(data[4])
                                 .path(path)
                                 .build()
@@ -60,6 +61,10 @@ public class FilesController {
         }
 
         return FilesType.INDETERMINATE;
+    }
+
+    public boolean mkdir(String nameFolder, String path) {
+        return commandController.mkdir(device, nameFolder, path);
     }
 
     public boolean pull(FileDevice fileDevice, String to){

@@ -183,4 +183,10 @@ public class CommandController {
         return adbService.executeCommand(command).replaceAll("\n", "").replaceAll("\r", "");
     }
 
+    public boolean mkdir(Device device, String nameFolder, String path) {
+        List<String> command = adbCommandBuilder.buildCommand( AdbCommands.ADB_MKDIR.getCommand(device.getDeviceName(), path + nameFolder));
+        String output = adbService.executeCommand(command);
+        return output.contains("created directory");
+    }
+
 }

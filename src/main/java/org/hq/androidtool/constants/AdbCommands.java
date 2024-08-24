@@ -25,7 +25,8 @@ public enum AdbCommands{
     ADB_PULL            ("-s %s pull %s %s"),
     ADB_LS              ("-s %s shell cd %s && ls -l"),
     ADB_LS_M            ("-s %s shell ls -m %s"),
-    ADB_STAT            ("-s %s shell stat -c");
+    ADB_STAT            ("-s %s shell stat -c"),
+    ADB_MKDIR           ("-s %s shell mkdir %s");
 
     private final String command;
 

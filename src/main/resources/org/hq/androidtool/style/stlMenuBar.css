@@ -1,6 +1,6 @@
 .menu_opc:hover {
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
 }
 
 .body-menu-bar {

@@ -17,6 +17,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import org.hq.androidtool.constants.FilesType;
 import org.hq.androidtool.controllers.FilesController;
+import org.hq.androidtool.controllers.gui.alert.CustomAlerts;
 import org.hq.androidtool.models.Contact;
 import org.hq.androidtool.models.Device;
 import org.hq.androidtool.models.FileDevice;
@@ -31,21 +32,19 @@ import java.io.File;
 import java.util.List;
 
 public class FilesPageControllers {
-    @FXML
-    private TableView<FileDevice> tblFiles;
-    @FXML
-    private HBox pnlHistory;
-    @FXML
-    private Button btnRootFiles;
-    @FXML
-    private TextField txtFilter;
+    @FXML private TableView<FileDevice> tblFiles;
+    @FXML private HBox                  pnlHistory;
+    @FXML private Button                btnRootFiles;
+    @FXML private TextField             txtFilter;
 
-    private Device device;
-    private FilesController filesController;
-    private List<FileDevice> fileDevices;
-    private ObservableList<FileDevice> fileDeviceObservableList;
-    private int idButtonHistory = 0;
     private static final Logger logger = LoggerFactory.getLogger(FilesPageControllers.class);
+
+    private Device                      device;
+    private FilesController             filesController;
+    private List<FileDevice>            fileDevices;
+    private ObservableList<FileDevice>  fileDeviceObservableList;
+    private int                         idButtonHistory = 0;
+    private String                      actualPath;
 
     private TableColumn<FileDevice, String> nameColumn;
     private TableColumn<FileDevice, String> userColumn;
@@ -61,7 +60,8 @@ public class FilesPageControllers {
 
     @FXML
     public void initialize(){
-        fileDevices = filesController.getFilesFrom("/");
+        actualPath = "/";
+        fileDevices = filesController.getFilesFrom(actualPath);
 
         createTableFiles();
         fillData();
@@ -166,11 +166,11 @@ public class FilesPageControllers {
 
                         double size = Double.parseDouble(item);
                         if (size < 1024) {
-                            setText(String.format("%.0f KB", size));
+                            setText(String.format("%.0f B", size));
                         } else if (size < 1024 * 1024) {
-                            setText(String.format("%.1f MB", size / 1024));
+                            setText(String.format("%.1f KB", size / 1024));
                         } else if (size < 1024 * 1024 * 1024) {
-                            setText(String.format("%.1f GB", size / (1024 * 1024)));
+                            setText(String.format("%.1f MB", size / (1024 * 1024)));
                         } else {
                             setText(String.format("%.0f GB", size / (1024 * 1024 * 1024)));
                         }
@@ -200,11 +200,11 @@ public class FilesPageControllers {
         Thread thread = new Thread(task);
         thread.setDaemon(true);
         thread.start();
-
     }
     private void handleCellDoubleClick(FileDevice item, String columnName) {
         if (item.getFileType() == FilesType.FOLDER) {
             String newPath = (item.getPath() + item.getName() + "/").replaceAll(" ", "");
+            actualPath = newPath;
             List<FileDevice> newFileDevices = filesController.getFilesFrom(newPath);
 
             Button history = new Button(item.getName());
@@ -264,10 +264,11 @@ public class FilesPageControllers {
         idButtonHistory = id;
         int idFromDrop = id + 1;
 
-        System.out.println("Droping Butons from: " + idFromDrop + " to " + pnlHistory.getChildren().size());
+//        System.out.println("Droping Butons from: " + idFromDrop + " to " + pnlHistory.getChildren().size());
         pnlHistory.getChildren().remove(id + idFromDrop, pnlHistory.getChildren().size());
 
         fileDevices = filesController.getFilesFrom(newPath);
+        actualPath = newPath;
         tblFiles.getItems().clear();
         fillData();
     }
@@ -287,7 +288,26 @@ public class FilesPageControllers {
 
     }
     public void onButtonNewFolder() {
+        FileDevice fileDevice = tblFiles.getSelectionModel().getSelectedItem();
 
+        CustomAlerts customAlerts = new CustomAlerts("Nueva Carpeta", "Nombre");
+        customAlerts.openAlert();
+        String nameFolder = customAlerts.getResult();
+
+        if (fileDevice != null && fileDevice.getFileType().equals(FilesType.FOLDER)) {
+            String pathFolder = (fileDevice.getPath() + fileDevice.getName() + "/").replaceAll(" ", "");
+            if (nameFolder != null)
+                if (filesController.mkdir(nameFolder, pathFolder))
+                    logger.info("Carpeta creada");
+                else
+                    logger.info("Carpeta no creada");
+        } else {
+            if (nameFolder != null)
+                if (filesController.mkdir(nameFolder, actualPath))
+                    logger.info("Carpeta creada");
+                else
+                    logger.info("Carpeta no creada");
+        }
     }
     public void onButtonSend() {
 
