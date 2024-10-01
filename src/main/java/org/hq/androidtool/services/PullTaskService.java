@@ -5,9 +5,9 @@ import javafx.concurrent.Task;
 import javafx.scene.control.Alert;
 import org.controlsfx.dialog.ProgressDialog;
 import org.hq.androidtool.constants.FilesType;
-import org.hq.androidtool.controllers.FilesController;
-import org.hq.androidtool.models.Device;
-import org.hq.androidtool.models.FileDevice;
+import org.hq.androidtool.files.FilesController;
+import org.hq.androidtool.device.Device;
+import org.hq.androidtool.files.FileDevice;
 import org.hq.androidtool.utils.AdbCommandFiles;
 
 import java.io.File;

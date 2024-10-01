@@ -1,8 +1,8 @@
 package org.hq.androidtool.utils;
 
 import javafx.concurrent.Task;
-import org.hq.androidtool.controllers.CommandController;
-import org.hq.androidtool.models.Device;
+import org.hq.androidtool.adb.CommandController;
+import org.hq.androidtool.device.Device;
 
 public class AdbCommandFiles {
     CommandController commandController;

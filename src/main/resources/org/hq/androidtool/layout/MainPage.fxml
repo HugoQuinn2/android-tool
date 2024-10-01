@@ -6,8 +6,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.scene.layout.StackPane?>
 
-<BorderPane fx:id="bp_main" styleClass="body" stylesheets="@../style/stlPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.controllers.gui.GuiMainController">
+<StackPane fx:id="StackPane" styleClass="body" stylesheets="@../style/stlPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hq.androidtool.gui.GuiMainController">
+<BorderPane fx:id="bp_main" >
    <center>
       <ScrollPane fx:id="pnlContentPane" styleClass="body" BorderPane.alignment="CENTER">
          <content>
@@ -25,3 +27,4 @@
       </ScrollPane>
    </center>
 </BorderPane>
+</StackPane>

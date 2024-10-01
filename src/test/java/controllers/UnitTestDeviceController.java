@@ -1,8 +1,7 @@
 package controllers;
 
-import org.hq.androidtool.controllers.CommandController;
-import org.hq.androidtool.controllers.DeviceController;
-import org.hq.androidtool.models.Device;
+import org.hq.androidtool.device.DeviceController;
+import org.hq.androidtool.device.Device;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -1,0 +1,51 @@
+.hidden {
+    -fx-opacity: 0; /* Oculta completamente */
+    -fx-visibility: hidden; /* Evita la interacción */
+}
+
+.visible {
+    -fx-opacity: 1; /* Completamente visible */
+    -fx-visibility: visible;
+    -fx-background-color: #F0F0F0;
+    -fx-border-color: #E8E8E8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.1, 0, 5);
+}
+
+.progress-bar-hidden {
+    -fx-opacity: 0; /* Oculta visualmente */
+    -fx-visibility: hidden; /* No interactuable */
+}
+
+.progress-bar-visible {
+    -fx-opacity: 1; /* Completamente visible */
+    -fx-visibility: visible;
+}
+
+.alert #iconMessage {
+    -fx-icon-color: #FABB81;
+}
+
+.info #iconMessage{
+    -fx-icon-color: #81D4FA; /* Soft blue */
+}
+
+.error #iconMessage{
+    -fx-icon-color: #FF6F61; /* Soft red */
+}
+
+.success #iconMessage{
+    -fx-icon-color: #A5D6A7;
+}
+
+
+.text-area {
+    -fx-background-color: #F0F0F0;
+    -fx-border-color: transparent;     /* Sin borde */
+    -fx-focus-color: transparent;      /* Color de foco transparente */
+    -fx-faint-focus-color: transparent;
+    -fx-padding: 0;                    /* Sin padding interno */
+    -fx-control-inner-background: transparent; /* Fondo interno transparente */
+    -fx-background-insets: 0;          /* Sin insets de fondo */
+    -fx-border-radius: 0;              /* Sin bordes redondeados */
+    -fx-text-fill: #414D42;
+}

@@ -1,10 +1,10 @@
 package controllers;
 
-import org.hq.androidtool.controllers.CommandController;
-import org.hq.androidtool.controllers.DeviceController;
-import org.hq.androidtool.controllers.FilesController;
-import org.hq.androidtool.models.Device;
-import org.hq.androidtool.models.FileDevice;
+import org.hq.androidtool.adb.CommandController;
+import org.hq.androidtool.device.DeviceController;
+import org.hq.androidtool.files.FilesController;
+import org.hq.androidtool.device.Device;
+import org.hq.androidtool.files.FileDevice;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

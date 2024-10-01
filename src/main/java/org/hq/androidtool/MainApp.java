@@ -3,13 +3,11 @@ package org.hq.androidtool;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.hq.androidtool.config.GuiConfig;
+import org.hq.androidtool.gui.GuiConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.util.Objects;
 
 public class MainApp extends Application {
