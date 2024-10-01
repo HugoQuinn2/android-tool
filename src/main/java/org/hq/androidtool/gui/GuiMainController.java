@@ -29,12 +29,10 @@ import org.slf4j.LoggerFactory;
 
 @Getter
 public class GuiMainController {
-    @FXML
-    private BorderPane bp_main;
-    @FXML
-    private StackPane StackPane;
-    @FXML
-    private ScrollPane pnlContentPane;
+    @FXML private BorderPane bp_main;
+    @FXML private StackPane StackPane;
+    @FXML private ScrollPane pnlContentPane;
+
     private TabPane pnlPagesContents;
     private List<Page> pages;
 
@@ -43,7 +41,10 @@ public class GuiMainController {
     @FXML
     public void initialize() {
         pages = new ArrayList<>();
+        injectMenu();
+    }
 
+    private void injectMenu() {
         try {
             FXMLLoader menu_bar = new FXMLLoader(getClass().getResource(GuiConfig.MENU_BAR_PAGE_PATH));
             menu_bar.setControllerFactory(param -> new MenuController(this));
@@ -57,9 +58,8 @@ public class GuiMainController {
             pnlContentPane.setFitToHeight(true);
         }
     }
-
-    public <T> void loadContent(String fxmlPath, T object, PagesType pagesType) {
-        Page newPage = new Page((Device) object, pagesType, null);
+    public void loadContent(String fxmlPath, Device device, PagesType pagesType) {
+        Page newPage = new Page(device, pagesType, null);
         Page actualPage = getPage(newPage);
 
         if (actualPage != null) {
@@ -70,8 +70,8 @@ public class GuiMainController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 loader.setControllerFactory(param -> {
                     try {
-                        return param.getDeclaredConstructor(object.getClass(), GuiMainController.class)
-                                .newInstance(object, this);
+                        return param.getDeclaredConstructor(device.getClass(), GuiMainController.class)
+                                .newInstance(device, this);
                     } catch (Exception e) {
                         logger.error("Error en carga de objeto: " + e);
                         throw new RuntimeException(e);
@@ -79,7 +79,7 @@ public class GuiMainController {
                 });
 
                 Pane content = loader.load();
-                Tab tabPage = newPage(content, pagesType, (Device) object);
+                Tab tabPage = newPage(content, pagesType, device);
 
                 tabPage.setOnClosed(event -> {
                     pages.remove(newPage);
@@ -96,7 +96,6 @@ public class GuiMainController {
             }
         }
     }
-
     private Page getPage(Page newPage) {
         for (Page page: pages) {
             if (newPage.getDevice().equals(page.getDevice())
@@ -106,8 +105,7 @@ public class GuiMainController {
 
         return null;
     }
-
-    private <T> Tab newPage(Pane content, PagesType pagesType, Device device){
+    private Tab newPage(Pane content, PagesType pagesType, Device device){
         String titlePage = String.format("%s (%s)", Pages.getTitleByType(pagesType), device.getDeviceName());
         Tab tab = new Tab(titlePage);
         FontIcon icon = new FontIcon(Pages.getIconByType(pagesType));
